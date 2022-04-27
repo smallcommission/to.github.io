@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+    <!-- GiraffeWebStudio LICENSE 
+    This site was created by GiraffeWeb web studio. 
+    Various modern technologies were used in its creation. 
+    Copying this site is not allowed. All rights reserved.
+
+    Welcome cooperation, links:
+    www.giraffeweb.ru
+    www.linkedin.com/in/danyalazorin/
+    www.behance.net/danyalazorin
+    www.instagram.com/giraffewebstudio/
+    
+    CEO DanyaLazorin.
+    -->
+    
+ <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>TO || Документация</title>
+    
+    <link rel="icon" type="image/png" href="img/favicon.png" />
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css?family=Cabin" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400" rel="stylesheet">
+    <link rel="stylesheet" href="css/app.css">
+    <link rel="stylesheet" type="text/css" href="css/main.css">
+</head>
+
+<body>
+
+    <!-- GiraffeWebStudio Documentation -->
+    <div id="pageloader" class="pageloader is-left-to-right is-theme"></div>
+    <div id="infraloader" class="infraloader is-active"></div>    
+    <div class="roadmap-wrapper">
+        <section class="hero is-medium">
+            <div class="hero-head">
+                <nav x-data="initNavbar()"  x-on:scroll.window="scroll()" id="navbar-clone" class="navbar is-fixed is-dark" :class="{
+                        'is-active': scrolled,
+                        '': !scrolled
+                    }">
+                    <div class="container">
+                        <div class="navbar-brand">
+                            <a href="index.html" class="navbar-item">
+                                <img class="rotating" src="img/logo/krypton-gradient.svg" alt="">
+                                <span class="brand-name">TO</span>
+                            </a>
+                            <div class="navbar-burger" @click="openMobileMenu()">
+                                <div class="menu-toggle">
+                                    <span class="icon-box-toggle" :class="{
+                                            'active': mobileOpen,
+                                            '': !mobileOpen
+                                        }">
+                                        <span class="rotate">
+                                            <i class="icon-line-top"></i>
+                                            <i class="icon-line-center"></i>
+                                            <i class="icon-line-bottom"></i>
+                                        </span>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="cloneNavbarMenu" class="navbar-menu" :class="{
+                                'is-active': mobileOpen,
+                                '': !mobileOpen
+                            }">
+                            <div class="navbar-end">
+                                <div class="navbar-item is-nav-link">
+                                    <a class="is-centered-responsive" href="index.html#hello">Знакомство</a>
+                                </div>
+                                <div class="navbar-item is-nav-link">
+                                    <a class="is-centered-responsive" href="index.html#feautures">Особенности</a>
+                                </div>
+                                <div class="navbar-item is-nav-link">
+                                    <a class="is-centered-responsive" href="index.html#work">Как работает?</a>
+                                </div>
+                                <div class="navbar-item is-nav-link">
+                                    <a class="is-centered-responsive" href="#roadmap">Документация</a>
+                                </div>
+                                <div class="navbar-item is-nav-link">
+                                    <a class="is-centered-responsive" href="https://t.me/smallcommision" target="_blank">
+                                        <img class="telegram" src="img/logo/telegram.svg" alt="">
+                                        Telegram
+                                    </a>
+                                </div>
+                                <div class="navbar-item is-nav-link">
+                                    <a href="index.html#buy" class="button k-button k-primary raised has-gradient slanted">
+                                        <span class="text">Начать</span>
+                                        <span class="front-gradient"></span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </nav>
+                <nav x-data="initNavbar()" class="navbar is-light" :class="{
+                        'is-dark-mobile': mobileOpen,
+                        '': !mobileOpen
+                    }">
+                    <div class="container">
+                        <div class="navbar-brand">
+                            <a href="index.html" class="navbar-item">
+                                <img class="rotating" src="img/logo/krypton.svg" alt="">
+                                <span class="brand-name">TO</span>
+                            </a>
+                            <div class="navbar-burger" @click="openMobileMenu()">
+                                <div class="menu-toggle">
+                                    <span class="icon-box-toggle" :class="{
+                                            'active': mobileOpen,
+                                            '': !mobileOpen
+                                        }">
+                                        <span class="rotate">
+                                            <i class="icon-line-top"></i>
+                                            <i class="icon-line-center"></i>
+                                            <i class="icon-line-bottom"></i>
+                                        </span>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="navbarMenu" class="navbar-menu light-menu" :class="{
+                                'is-active': mobileOpen,
+                                '': !mobileOpen
+                            }">
+                            <div class="navbar-end">
+                                <div class="navbar-item is-nav-link">
+                                    <a class="is-centered-responsive" href="index.html#hello">Знакомство</a>
+                                </div>
+                                <div class="navbar-item is-nav-link">
+                                    <a class="is-centered-responsive" href="index.html#feautures">Особенности</a>
+                                </div>
+                                <div class="navbar-item is-nav-link">
+                                    <a class="is-centered-responsive" href="index.html#work">Как работает?</a>
+                                </div>
+                                <div class="navbar-item is-nav-link">
+                                    <a class="is-centered-responsive" href="#roadmap">Документация</a>
+                                </div>
+                                <div class="navbar-item is-nav-link">
+                                    <a class="is-centered-responsive" href="https://t.me/smallcommision" target="_blank">
+                                        <img class="telegram" src="img/logo/telegram.svg" alt="">
+                                        Telegram
+                                    </a>
+                                </div>
+                                <div class="navbar-item">
+                                    <a href="index.html#buy" class="button k-button k-primary raised has-gradient slanted">
+                                        <span class="text">Начать</span>
+                                        <span class="front-gradient"></span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </nav>
+            </div>
+    
+            <div class="hero-body has-text-centered">
+                <div class="columns">
+                    <div class="column is-6 is-offset-3">
+                        <div class="roadmap-image">
+                            <img src="img/illustrations/world.svg">
+                        </div>
+                        <h1 class="title is-2 is-light is-semibold is-spaced main-title">Документация</h1>
+                        <h2 class="subtitle is-5 is-light is-thin">
+                            На данной странице вам представлена вся актуальная информация о нашей компании: политика конфиденциальности, пользовательское соглашение, право на информационную деятельность.
+                        </h2>
+                        <p>
+                            <a href="#roadmap" class="button k-button k-primary raised has-gradient is-fat is-bold">
+                                <span class="text">ОЗНАКОМИТЬСЯ</span>
+                                <span class="front-gradient"></span>
+                            </a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    
+        <section x-data="initRoadmap()" x-init="setupRoadmap()" id="roadmap" class="main-timeline">
+            <ul>
+                <li>
+                    <div>
+                        <span class="item-title">Пользовательское соглашение</span>
+                        <time>Обновлён 25 апреля 2022 г. <br>PDF</time> 
+                        <span class="item-content">
+                            Настоящее Пользовательское соглашение (далее – «Соглашение») является электронным договором между Пользователем и Сервисом "TO" и содержит правила работы на сайте.   
+                        </span>
+                        <span class="more">
+                            <i data-feather="file-text"></i>
+                            <a href="#">ДОКУМЕНТ</a>
+                        </span>
+                    </div>
+                </li>
+                <li>
+                    <div>
+                        <span class="item-title">Политика AML</span>
+                        <time>Обновлён 20 апреля 2022 г. <br>PDF</time> 
+                        <span class="item-content">
+                            Политика борьбы с легализацией средств, полученных преступным путем (Anti-Money Laundering Policy).
+                        </span>
+                        <span class="more">
+                            <i data-feather="file-text"></i>
+                            <a href="#">ДОКУМЕНТ</a>
+                        </span>
+                    </div>
+                </li>
+                <li>
+                    <div>
+                        <span class="item-title">Политика конфиденциальности</span>
+                        <time>Обновлён 17 апреля 2022 г. <br>PDF</time> 
+                        <span class="item-content">
+                            Настоящая политика обработки персональных данных вместе с Пользовательским соглашением и его другими неотъемлемыми частями, составлена в соответствии с требованиями Федерального закона от 27.07.2006 года №152-ФЗ «О персональных данных» и определяет порядок обработки персональных данных и меры по обеспечению безопасности персональных данных, осуществляемые Сервисом.
+                        </span>
+                        <span class="more">
+                            <i data-feather="file-text"></i>
+                            <a href="#">ДОКУМЕНТ</a>
+                        </span>
+                    </div>
+                </li>
+                <li>
+                    <div>
+                        <span class="item-title">Декларация</span>
+                        <time>Обновлён 15 апреля 2022 г. <br>PDF</time> 
+                        <span class="item-content">
+                            Декларация подтверждения легальности происхождения денежных средств и криптовалютных активов.
+                        </span>
+                        <span class="more">
+                            <i data-feather="file-text"></i>
+                            <a href="#">ДОКУМЕНТ</a>
+                        </span>
+                    </div>
+                </li>
+                <li>
+                    <div>
+                        <span class="item-title">Политика Cookie</span>
+                        <time>Обновлён 05 апреля 2022 г. <br>PDF</time> 
+                        <span class="item-content">
+                            Сервис https://smallcommission.su/ (TO) использует сеансовые и постоянные файлы cookie. Сеансовые файлы cookie хранятся временно и удаляются после закрытия браузера. 
+                        </span>
+                        <span class="more">
+                            <i data-feather="file-text"></i>
+                            <a href="#">ДОКУМЕНТ</a>
+                        </span>
+                    </div>
+                </li>
+            </ul>
+        </section>
+    
+        <section>
+            <div class="roadmap-end">
+                <img src="img/illustrations/roadmap-end.svg" alt="">
+            </div>
+        </section>
+    </div>
+
+
+    <!-- GiraffeWebStudio Footer -->
+    <footer class="krypton-footer">
+        <div class="container">
+            <div class="footer-logo">
+                <a href="#">
+                    <img class="rotating" src="img/logo/krypton-gradient.svg" alt="">
+                    <div class="brand-name">TO</div>
+                    <div class="brand-subtitle">Новый подход к транзакциям в Россию</div>
+                </a>
+            </div>
+            <div class="columns footer-columns is-vcentered">
+                <div class="column is-4">
+                    <ul class="footer-links">
+                        <li>
+                            <a href="index.html#hello">Знакомство</a>
+                        </li>
+                        <li>
+                            <a href="index.html#feautures">Особенности</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="column is-4">
+                    <div class="subscribe-block">
+                        <form>
+                            <div class="control">
+                                <input class="krypton-subscribe-input" type="email" name="help_email_or_phone" placeholder="Телефон/E-mail">
+                                <button class="subscribe-button" type='submit'>
+                                    <span>Связаться</span>
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="column is-4">
+                    <ul class="footer-links">
+                        <li>
+                            <a href="index.html#work">Как работает?</a>
+                        </li>
+                        <li>
+                            <a href="https://t.me/smallcommision">МЫ в Telegram</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <p class="k-copyright"><a style='color:white;'>Все права защищены</a> | <a href='#roadmap' style='color:white;'>Полная документация</a></p>
+            <br>
+            <p class="coded-by">Веб-студия <a href="https://giraffeweb.ru" target="_blank">GiraffeWeb</a></p>
+            <p class="coded-by">© 2020-<script>document.write(new Date().getFullYear());</script> </p>
+            
+        </div>
+        <img class="solar-system" src="img/bg/solar.svg" alt="">
+    </footer>
+    <div x-data="initBackToTop()" x-on:scroll.window="scroll($event)" @click="goTop($event)" id="backtotop"><a href="javascript:" :class="{
+        'visible': scrolled,
+        '': !scrolled
+    }"></a></div>
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script src="./js/bundle.js"></script>
+
+</body>
+
+</html>
