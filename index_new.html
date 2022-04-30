@@ -1,0 +1,599 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+    <!-- GiraffeWebStudio LICENSE 
+    This site was created by GiraffeWeb web studio. 
+    Various modern technologies were used in its creation. 
+    Copying this site is not allowed. All rights reserved.
+
+    Welcome cooperation, links:
+    www.giraffeweb.ru
+    www.linkedin.com/in/danyalazorin/
+    www.behance.net/danyalazorin
+    www.instagram.com/giraffewebstudio/
+    
+    CEO DanyaLazorin.
+    -->
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>TO || Система транзакций</title>
+
+    <link rel="icon" type="image/png" href="img/favicon.png" />
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css?family=Cabin" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400" rel="stylesheet">
+    <link rel="stylesheet" href="css/app.css">
+    <link rel="stylesheet" type="text/css" href="css/main.css">
+</head>
+
+<body>
+
+    <!-- GiraffeWebStudio Hello -->
+    <div id="pageloader" class="pageloader is-left-to-right is-theme"></div>
+    <div id="infraloader" class="infraloader is-active"></div>    
+    <div class="dark-wrapper">
+        <section class="hero is-fullheight is-transparent">
+            <div class="hero-head">
+                <nav x-data="initNavbar()"  x-on:scroll.window="scroll()" id="navbar-clone" class="navbar is-fixed is-dark" :class="{
+                        'is-active': scrolled,
+                        '': !scrolled
+                    }">
+                    <div class="container">
+                        <div class="navbar-brand">
+                            <a href="index.html" class="navbar-item">
+                                <img class="rotating" src="img/logo/krypton-gradient.svg" alt="">
+                                <span class="brand-name">TO</span>
+                            </a>
+                            <div class="navbar-burger" @click="openMobileMenu()">
+                                <div class="menu-toggle">
+                                    <span class="icon-box-toggle" :class="{
+                                            'active': mobileOpen,
+                                            '': !mobileOpen
+                                        }">
+                                        <span class="rotate">
+                                            <i class="icon-line-top"></i>
+                                            <i class="icon-line-center"></i>
+                                            <i class="icon-line-bottom"></i>
+                                        </span>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="cloneNavbarMenu" class="navbar-menu" :class="{
+                                'is-active': mobileOpen,
+                                '': !mobileOpen
+                            }">
+                            <div class="navbar-end">
+                                <div class="navbar-item is-nav-link">
+                                    <a class="is-centered-responsive" href="#hello">Знакомство</a>
+                                </div>
+                                <div class="navbar-item is-nav-link">
+                                    <a class="is-centered-responsive" href="#feautures">Особенности</a>
+                                </div>
+                                <div class="navbar-item is-nav-link">
+                                    <a class="is-centered-responsive" href="#work">Как работает?</a>
+                                </div>
+                                <div class="navbar-item is-nav-link">
+                                    <a class="is-centered-responsive" href="documentation.html">Документация</a>
+                                </div>
+                                <div class="navbar-item is-nav-link">
+                                    <a class="is-centered-responsive" href="https://t.me/smallcommision" target="_blank">
+                                        <img class="telegram" src="img/logo/telegram.svg" alt="">
+                                        Telegram
+                                    </a>
+                                </div>
+                                <div class="navbar-item is-nav-link">
+                                    <a href="#buy" class="button k-button k-primary raised has-gradient slanted">
+                                        <span class="text">Начать</span>
+                                        <span class="front-gradient"></span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </nav>
+                <nav x-data="initNavbar()" class="navbar is-light" :class="{
+                        'is-dark-mobile': mobileOpen,
+                        '': !mobileOpen
+                    }">
+                    <div class="container">
+                        <div class="navbar-brand">
+                            <a href="index.html" class="navbar-item">
+                                <img class="rotating" src="img/logo/krypton.svg" alt="">
+                                <span class="brand-name">TO</span>
+                            </a>
+                            <div class="navbar-burger" @click="openMobileMenu()">
+                                <div class="menu-toggle">
+                                    <span class="icon-box-toggle" :class="{
+                                            'active': mobileOpen,
+                                            '': !mobileOpen
+                                        }">
+                                        <span class="rotate">
+                                            <i class="icon-line-top"></i>
+                                            <i class="icon-line-center"></i>
+                                            <i class="icon-line-bottom"></i>
+                                        </span>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="navbarMenu" class="navbar-menu light-menu" :class="{
+                                'is-active': mobileOpen,
+                                '': !mobileOpen
+                            }">
+                            <div class="navbar-end">
+                                <div class="navbar-item is-nav-link">
+                                    <a class="is-centered-responsive" href="#hello">Знакомство</a>
+                                </div>
+                                <div class="navbar-item is-nav-link">
+                                    <a class="is-centered-responsive" href="#feautures">Особенности</a>
+                                </div>
+                                <div class="navbar-item is-nav-link">
+                                    <a class="is-centered-responsive" href="#work">Как работает?</a>
+                                </div>
+                                <div class="navbar-item is-nav-link">
+                                    <a class="is-centered-responsive" href="documentation.html">Документация</a>
+                                </div>
+                                <div class="navbar-item is-nav-link">
+                                    <a class="is-centered-responsive" href="https://t.me/smallcommision" target="_blank">
+                                        <img class="telegram" src="img/logo/telegram.svg" alt="">
+                                        Telegram
+                                    </a>
+                                </div>
+                                <div class="navbar-item">
+                                    <a href="#buy" class="button k-button k-primary raised has-gradient slanted">
+                                        <span class="text">Начать</span>
+                                        <span class="front-gradient"></span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </nav>
+            </div>
+            <div x-data="initHero()" x-init="initParticles()" id="particles-js"></div>
+            <div class="hero-body">
+                <div class="container">
+                    <div class="columns is-vcentered">
+                        <div class="column is-5 landing-caption">
+
+
+                            
+                            <h1 class="title is-1 is-light is-semibold is-spaced main-title">Перевод денег<br>из-за границы</h1>
+                            <h2 class="subtitle is-5 is-light is-thin">
+                                Совершайте транзакции в любое удобное для вас время.
+                            </h2>
+                            <p class="buttons">
+                                <a href="#start" class="button k-button k-primary raised has-gradient is-fat is-bold">
+                                    <span class="text">Познакомимся</span>
+                                    <span class="front-gradient"></span>
+                                </a>
+                                <a href="#buy" class="button k-button k-primary raised has-gradient is-fat is-bold">
+                                    <span class="text">Начать</span>
+                                    <span class="front-gradient"></span>
+                                </a>
+                            </p>
+                        </div>
+                        
+                        <div class="column is-7">
+                            <figure class="image">
+                                <img src="img/illustrations/buildings.svg" alt="">
+                            </figure>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="columns">
+                <div class="column is-6 is-offset-3">            
+            <!-- GiraffeWebStudio Companies -->
+            <div class="hero-foot">
+                <div class="container">
+                    <div class="tabs is-centered">
+                        <ul>
+                            <li><a><img class="hero-logo" src="img/clients/cryptomarket.svg" alt=""></a></li>
+                            <li><a><img class="hero-logo" src="img/clients/bitit.svg" alt=""></a></li>
+                            <li><a><img class="hero-logo" src="img/clients/coin.svg" alt=""></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+    
+
+        <section class="section is-transparent is-relative">
+
+    <!-- GiraffeWebStudio Get Contact -->
+            <div class="container" id='buy'>
+                <div class="divider is-centered"></div>
+                <h2 class="title is-light is-semibold has-text-centered is-spaced">Совершить перевод</h2>
+                <h4 class="subtitle is-6 is-light has-text-centered is-compact">Заполните заявку ниже, после мы обработаем ваш запрос и свяжемся с вами. Всё происходит очень быстро.</h4>
+                <div class="content-wrapper is-large">
+                    <div class="columns">
+                        <div class="column is-8 is-offset-2">
+                            <div class="contact-icons">
+                                <a class="contact-icon" data-aos="fade-up" data-aos-delay="300" data-aos-offset="200" data-aos-easing="ease-out-quart" href='mailto:smallcomission@gmail.com'>
+                                    <img class="is-phone" src="img/icons/mail.svg" alt="">
+                                </a>
+                                <a class="contact-icon" data-aos="fade-up" data-aos-delay="500" data-aos-offset="200" data-aos-easing="ease-out-quart" href='https://t.me/smallcommision'>
+                                    <img class="is-telegram" src="img/logo/telegram.svg" alt="">
+                                </a>
+                            </div> 
+                        </div>
+                    </div>
+                    <div class="columns">
+                        <div class="column is-6 is-offset-3">
+                            <form class="contact-form" action="https://formspree.io/f/mlezonpr" method="POST">
+                                <div class="control-material is-secondary">      
+                                    <input class="material-input" type="text" name='fio' required>
+                                    <span class="material-highlight"></span>
+                                    <span class="bar"></span>
+                                    <label>ФИО</label>
+                                </div>
+                                <div class="control-material is-secondary">      
+                                    <input class="material-input" type="email" name='email' required>
+                                    <span class="material-highlight"></span>
+                                    <span class="bar"></span>
+                                    <label>E-mail</label>
+                                </div>
+                                
+                                <div class="control-material is-secondary">      
+                                    <input class="material-input" type="number" name='phone' required>
+                                    <span class="material-highlight"></span>
+                                    <span class="bar"></span>
+                                    <label>Реквизиты</label>
+                                </div>
+                                <div class="control-material is-secondary">      
+                                    <input class="material-input" type="number" name='price' required>
+                                    <span class="material-highlight"></span>
+                                    <span class="bar"></span>
+                                    <label>Сумма перевода: <span style='color:gray;'>###₽</span></label>
+                                </div>
+                                <div class="control-material is-secondary">      
+                                    <input class="material-input" type="text" name='company' required>
+                                    <span class="material-highlight"></span>
+                                    <span class="bar"></span>
+                                    <label>Организация: <span style='color:gray;'>СПИСОК</span></label>
+                                </div>
+                                <div class="control-material is-secondary">  
+                                    <textarea rows="3" name='details'></textarea>
+                                    <span class="material-highlight"></span>
+                                    <span class="bar"></span>
+                                    <label>Детали транзакции (если необходимо) </label>
+                                </div>
+    
+                                <div class="has-text-centered">
+                                    <button type='submit' class="button is-button k-button k-primary raised has-gradient is-fat is-bold is-submit">
+                                        <span class="text">Отправить запрос</span>
+                                        <span class="front-gradient"></span>
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+    <!-- GiraffeWebStudio Introduction -->
+        <section id="start" class="section is-transparent is-relative">
+            <div class="container">
+                <div class="has-text-centered">
+                    <a class="button k-button k-secondary raised has-gradient is-fat is-bold rounded" href='#buy'>
+                        <span class="text">Осуществить перевод</span>
+                        <span class="front-gradient"></span>
+                    </a>
+                    <div class="buy-title">Мы принимаем</div>
+                    <div class="accepted-currencies">
+                        <div>
+                            <i class="cf cf-btc"></i>
+                        </div>
+                        <div>
+                            <i class="cf cf-eth"></i>
+                        </div>
+                        <div>
+                            <i class="cf cf-ltc"></i>
+                        </div>
+                        <div>
+                            <i class="cf cf-xem"></i>
+                        </div>
+                    </div>
+                </div>
+    
+                <div class="content-wrapper is-medium" id='hello'>
+                    <div class="columns is-vcentered">
+                        <div class="column is-4">
+                            <div class="feature">
+                                <img src="img/icons/chained.svg" alt="" data-aos="fade-up" data-aos-delay="100" data-aos-offset="200" data-aos-easing="ease-out-quart">
+                                <h4 class="title is-6 is-tight is-light">Стабильность</h4>
+                                <p>Всемирная обстановка меняется с каждым днём. Благодаря нам вы можете осуществлять переводы из-за рубежа в Россию в любой момент.</p>
+                            </div>
+                        </div>
+                        <div class="column is-4">
+                            <div class="feature">
+                                <img src="img/icons/stacked.svg" alt="" data-aos="fade-up" data-aos-delay="300" data-aos-offset="200" data-aos-easing="ease-out-quart">
+                                <h4 class="title is-6 is-tight is-light">Сгруппированность</h4>
+                                <p>Наш сервис объединяет огромное количество технологий. Это позволяет оставаться в постоянном движении, следовательно, осуществлять стабильные переводы.</p>
+                            </div>
+                        </div>
+                        <div class="column is-4">
+                            <div class="feature">
+                                <img src="img/icons/compact.svg" alt="" data-aos="fade-up" data-aos-delay="500" data-aos-offset="200" data-aos-easing="ease-out-quart">
+                                <h4 class="title is-6 is-tight is-light">Защищённость</h4>
+                                <p>Наш сервис защищён по последним стандартам этого года. Всё находится в безопасности.</p>
+                            </div>
+                        </div>
+                    </div>
+    
+    <!-- GiraffeWebStudio Video -->
+                    <div class="cta-wrapper has-text-centered">
+                        <div class="video-button levitate js-modal-btn" data-video-id="6WG7D47tGb0">
+                            <img src="img/icons/play.svg" alt="">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    
+        <!-- GiraffeWebStudio Steps -->
+        <section id="big-gradient" class="section is-transparent">
+            <div class="container" id='feautures'>
+                <div class="divider is-centered"></div>
+                <h2 class="title is-light is-semibold has-text-centered is-spaced">Как работает?</h2>
+                <h4 class="subtitle is-6 is-light has-text-centered is-compact">Мы находимся на рынке с 2020 года. В течение последних двух лет мы совершаем стабильные переводы людей из любых стран мира в Россию. <br>Далее вам представлены этапы работы сервиса.</h4>
+                <div class="content-wrapper is-large">
+                    <div class="columns is-vcentered">
+                        <div class="column is-5 is-offset-1">
+                            <div class="side-feature-content">
+                                <h3 class="title is-4 is-light"><img src="img/icons/ico/bitbanner.svg" alt=""></h3>
+                                <div class="divider is-long"></div>
+                                <p class="is-light">Давайте познакомимся. TO — это сервис, которые совершает перевод из-за границы и не только. Сегодня ситуация в мире меняется с каждым днём, но мы реализуем систему стабильных переводов.</p>
+                                <div class="cta-wrapper">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="column is-7">
+                            <img class="side-feature" src="img/illustrations/token.svg" alt="">
+                        </div>
+                    </div>
+                    <div class="columns is-vcentered">
+                        <div class="column is-7 is-hidden-mobile">
+                            <img class="side-feature" src="img/illustrations/blockchain-blocks.svg" alt="">
+                        </div>
+                        <div class="column is-5">
+                            <div class="side-feature-content">
+    
+                                <h3 class="title is-4 is-light"><img src="img/icons/ico/bitnetwork.svg" alt=""></h3>
+                                <div class="divider is-long"></div>
+                                <p class="is-light">Мы работаем со многими платёжными органиациями, наша сеть обширна. Всё это в совокупности позволяет выполнять любые транзакции для наших клиентов.</p>
+                                <div class="cta-wrapper">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="column is-7 is-hidden-desktop is-hidden-tablet">
+                            <img class="side-feature" src="img/illustrations/blockchain-blocks.svg" alt="">
+                        </div>
+                    </div>
+                    <div class="columns is-vcentered">
+                        <div class="column is-5 is-offset-1">
+                            <div class="side-feature-content">
+                                <h3 class="title is-4 is-light"><img src="img/icons/ico/bitmining.svg" alt=""></h3>
+                                <div class="divider is-long"></div>
+                                <p class="is-light">Для того чтобы совершить нужный перевод, вы должны заполнить соответствующую форму, после чего с вами свяжутся наши специалисты и помогут вам выполнить ту или иную транзакцию.</p>
+                                <div class="cta-wrapper">
+                                    <a href="#" class="button k-button k-primary raised has-gradient is-bold">
+                                        <span class="text">Приступить</span>
+                                        <span class="front-gradient"></span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="column is-7">
+                            <img class="side-feature" src="img/illustrations/crypto-mining.svg" alt="">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    
+        <!-- GiraffeWebStudio Online -->
+        <section class="section is-medium is-darkest">
+            <div class="container">
+                <div class="divider is-centered"></div>
+                <h2 class="title is-light is-semibold has-text-centered is-spaced">Всегда онлайн</h2>
+                <h4 class="subtitle is-6 is-light has-text-centered is-compact">Сервис работает без перерыва. Наши специалисты помогут вам осуществить перевод из любой страны в Россию.</h4>
+                <div class="content-wrapper is-large">
+                    <div class="columns is-vcentered">
+                        <div class="column is-5">
+                            <div class="side-feature-content">
+                                <h3 class="title is-4 is-light"><img src="img/icons/ico/bitnetwork.svg" alt=""> <span>Есть вопросы переводу?</span></h3>
+                                <p class="is-light">Мы с радостью готовы помочь вам в любом вопросе. Для этого напишите нам! Все транзакции совершаются по мере поступления, можете не переживать.</p>
+                                <div class="cta-wrapper">
+                                    <a href="https://t.me/smallcommision" class="button k-button k-primary raised has-gradient is-fat is-bold">
+                                        <span class="text">Telegram</span>
+                                        <span class="front-gradient"></span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="column is-7">
+                            <img class="side-feature" src="img/illustrations/krypton-app.svg" alt="">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="divider is-centered is-spacer"></div>
+                <h2 class="title is-light is-semibold has-text-centered is-spaced">Ниже вам представлены ответы на вопросы</h2>
+                <div class="content-wrapper is-large" id='work'>
+                    <div class="columns">
+                        <div class="column is-5 is-offset-1">
+                            <div class="accordion">
+                                <div class="accordion-option">
+                                    <input type="checkbox" id="toggle1" class="accordion-toggle" />
+                                    <label class="accordion-title" for="toggle1">
+                                        Какие услуги предоставляет сервис?
+                                    </label>
+                                    <div class="accordion-content">
+                                        <p>TO предлагает автоматический обмен интернет-банкингов, электронных валют, криптовалют средств и фиатных денег.</p>
+                                    </div>
+                                </div>
+                                <div class="accordion-option">
+                                    <input type="checkbox" id="toggle2" class="accordion-toggle" />
+                                    <label class="accordion-title" for="toggle2">
+                                        Как совершать обмен? Все операции в обменном пункте TO проводятся в автоматическом режиме под контролем операторов.
+                                    </label>
+                                    <div class="accordion-content">
+                                        <p>1. Нажмите кнопку "Начать".<br>
+                                            2. Заполните все необходимые данные. Пожалуйства, проверьте правильность введёных данных.<br>
+                                            3. Далее нажмите "отправить запрос". <br>
+                                            4. В своей платежной системе проверьте правильность кошелька сервиса TO и комментарий к переводу. Вам необходимо совершить оплату в течении 20 минут. Также сообщение о статусе заявки придет на ваш контактный E-mail. Если по каким-либо причинам Вы не успели произвести оплату в заданный период времени, то сообщите нашему оператору для решения проблемы. <br>
+                                            5. После успешной операции обмена, пожалуйста, выскажите свое мнение о сервисе TO. </p>
+                                    </div>
+                                </div>
+                                <div class="accordion-option">
+                                    <input type="checkbox" id="toggle3" class="accordion-toggle" />
+                                    <label class="accordion-title" for="toggle3">
+                                        Какой режим работы Вашего сервиса?
+                                    </label>
+                                    <div class="accordion-content">
+                                        <p>Все операции производятся в автоматическом режиме. Вы можете обменять средства в любое удобное для Вас время. </p>
+                                    </div>
+                                </div>
+                                <div class="accordion-option">
+                                    <input type="checkbox" id="toggle4" class="accordion-toggle" />
+                                    <label class="accordion-title" for="toggle4">
+                                        Я указал неверные реквизиты и средства не пришли.<br> Что делать?
+                                    </label>
+                                    <div class="accordion-content">
+                                        <p>К сожалению, мы не сможем вернуть ваши средства. Пожалуйста, будьте внимательней при заполнении реквизитов. </p>
+                                    </div>
+                                </div>
+                                <div class="accordion-option">
+                                    <input type="checkbox" id="toggle5" class="accordion-toggle" />
+                                    <label class="accordion-title" for="toggle5">
+                                        Сколько времени занимает обмен?
+                                    </label>
+                                    <div class="accordion-content">
+                                        <p>Обмены электронных валют мгновенны. Время перевода криптовалют зависит от подтверждений сети, обычно занимает 5-30 минут после отправки. </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="column is-5">
+                            <div class="accordion">
+                                <div class="accordion-option">
+                                    <input type="checkbox" id="toggle6" class="accordion-toggle" />
+                                    <label class="accordion-title" for="toggle6">
+                                        Почему моя заявка отклонена?
+                                    </label>
+                                    <div class="accordion-content">
+                                        <p>Заявка может быть отклонена в таких случаях: Вы не произвели оплату в течение 16 минут 40 секунд с момента оформления заявки; Вы перечислили неправильную сумму и система не распознает Ваш платеж; Вы перечислили по заявке сумму Биткоин меньше минимальной рекомендованной комиссии. Заявки с Bitcoin, оплаченные на сумму меньше минимальной рекомендованной комиссии системы, выполнению и возврату не подлежат; Вы указали некорректные реквизиты, по которым система не может произвести платеж. </p>
+                                    </div>
+                                </div>
+                                <div class="accordion-option">
+                                    <input type="checkbox" id="toggle7" class="accordion-toggle" />
+                                    <label class="accordion-title" for="toggle7">
+                                        Что такое подтверждения в системе Bitcoin?
+                                    </label>
+                                    <div class="accordion-content">
+                                        <p>Для уменьшения вероятности двойного использования средств, любая транзакция должна получить подтверждения. Для получения подтверждений владельцу кошелька ничего делать не нужно. Система Вitcoin автоматически генерирует подтверждения в течение некоторого времени. </p>
+                                    </div>
+                                </div>
+                                <div class="accordion-option">
+                                    <input type="checkbox" id="toggle8" class="accordion-toggle" />
+                                    <label class="accordion-title" for="toggle8">
+                                        Я сделал оплату и перевел криптовалюту, но заявка отменена. Что делать?
+                                    </label>
+                                    <div class="accordion-content">
+                                        <p>Такое возможно, если вы проводите оплату с биржи криптовалют. Время оплаты обмена на нашем сайте 16 минут 40 секунд, но биржи Poloniex, EXMO, Bittrex, Bitfinex и другие могут выводить Ваши средства с задержкой, согласно установленного ими регламента. Иногда задержка может достигать до 12 часов. При обращении в службу поддержки, убедитесь, что сервис завершил вывод средств на Ваш кошелек.Если время оплаты на нашем сайте истекло и заявка уже отменена, пожалуйста, сообщите в нашу службу поддержки hash или ссылку на транзакцию. Мы восстановим Вашу заявку и выполним ее после получения подтверждений транзакции. Если вы оплатили обмен с криптовалютами Bitcoin, Ethereum, Litecoin, Ethereum Classic, Dash, Zcash, BitcoinCash, Dogecoin, Ripple ("Отдаете"), но средства не поступили на счет нашего сервиса по истечению 12 часов, сообщите, пожалуйста, об этом в нашу службу поддержки. При обращении необходимо предоставить скриншот перевода со своего кошелька или биржи. На скриншоте должна быть видна дата перевода и адрес получателя. После обращения в службу поддержки и подтверждения перевода скриншотом адрес оплаты будет заархивирован. </p>
+                                    </div>
+                                </div>
+                                <div class="accordion-option">
+                                    <input type="checkbox" id="toggle9" class="accordion-toggle" />
+                                    <label class="accordion-title" for="toggle9">
+                                        Обязательна ли регистрация на вашем сайте?
+                                    </label>
+                                    <div class="accordion-content">
+                                        <p>Абсолютно нет. Сервис создан для удобства. Вы оставляете заявку, мы работаем. Все транзакции обрабатываются очень быстро. </p>
+                                    </div>
+                                </div>
+                                <div class="accordion-option">
+                                    <input type="checkbox" id="toggle10" class="accordion-toggle" />
+                                    <label class="accordion-title" for="toggle10">
+                                        Могу ли я отказаться от обмена, если уже оплатил заявку?
+                                    </label>
+                                    <div class="accordion-content">
+                                        <p>Если Вы уже оплатили заявку, то отказаться от обмена нельзя. Вы можете сделать обратную операцию обмена, но в этом случае все комиссии покрываются за счет клиента. </p>
+                                    </div>
+                                </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+    
+    <!-- GiraffeWebStudio Footer -->
+    <footer class="krypton-footer">
+        <div class="container">
+            <div class="footer-logo">
+                <a href="#">
+                    <img class="rotating" src="img/logo/krypton-gradient.svg" alt="">
+                    <div class="brand-name">TO</div>
+                    <div class="brand-subtitle">Новый подход к транзакциям в Россию</div>
+                </a>
+            </div>
+            <div class="columns footer-columns is-vcentered">
+                <div class="column is-4">
+                    <ul class="footer-links">
+                        <li>
+                            <a href="#hello">Знакомство</a>
+                        </li>
+                        <li>
+                            <a href="#feautures">Особенности</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="column is-4">
+                    <div class="subscribe-block">
+                        <form action="https://formspree.io/f/mlezonpr" method="POST">
+                            <div class="control">
+                                <input class="krypton-subscribe-input" type="email" name="help_email_or_phone" placeholder="Телефон/E-mail">
+                                <button class="subscribe-button" type='submit'>
+                                    <span>Связаться</span>
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="column is-4">
+                    <ul class="footer-links">
+                        <li>
+                            <a href="#work">Как работает?</a>
+                        </li>
+                        <li>
+                            <a href="https://t.me/smallcommision">МЫ в Telegram</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <p class="k-copyright"><a style='color:white;'>Все права защищены</a> | <a href='documentation.html' style='color:white;'>Полная документация</a></p>
+            <br>
+            <p class="coded-by">Веб-студия <a href="https://giraffeweb.ru" target="_blank">GiraffeWeb</a></p>
+            <p class="coded-by">© 2020-<script>document.write(new Date().getFullYear());</script> </p>
+            
+        </div>
+        <img class="solar-system" src="img/bg/solar.svg" alt="">
+    </footer>
+    <div x-data="initBackToTop()" x-on:scroll.window="scroll($event)" @click="goTop($event)" id="backtotop"><a href="javascript:" :class="{
+        'visible': scrolled,
+        '': !scrolled
+    }"></a></div>
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script src="./js/bundle.js"></script>
+</body>
+</html>
