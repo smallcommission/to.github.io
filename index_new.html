@@ -208,10 +208,12 @@
 
     <!-- GiraffeWebStudio Get Contact -->
             <div class="container" id='buy'>
+                
                 <div class="divider is-centered"></div>
                 <h2 class="title is-light is-semibold has-text-centered is-spaced">Совершить перевод</h2>
                 <h4 class="subtitle is-6 is-light has-text-centered is-compact">Заполните заявку ниже, после мы обработаем ваш запрос и свяжемся с вами. Всё происходит очень быстро.</h4>
                 <div class="content-wrapper is-large">
+                    
                     <div class="columns">
                         <div class="column is-8 is-offset-2">
                             <div class="contact-icons">
@@ -222,6 +224,18 @@
                                     <img class="is-telegram" src="img/logo/telegram.svg" alt="">
                                 </a>
                             </div> 
+                        </div>
+                    </div>
+                    <div class="buy-title"></div>
+                    <div class="accepted-currencies">
+                        <div>
+                            <i class="cf cf-btc"> <span class="ticker_usd" data-coin="PRICE_BTC">НЕТ ДАННЫХ</span> </i>
+                        </div>
+                        <div>
+                            <i class="cf cf-eth"><span class="ticker_usd" data-coin="PRICE_ETH">НЕТ ДАННЫХ</span></i>
+                        </div>
+                        <div>
+                            <i class="cf cf-ltc"><span class="ticker_usd" data-coin="PRICE_LTC">НЕТ ДАННЫХ</span></i>
                         </div>
                     </div>
                     <div class="columns">
@@ -282,28 +296,6 @@
     <!-- GiraffeWebStudio Introduction -->
         <section id="start" class="section is-transparent is-relative">
             <div class="container">
-                <div class="has-text-centered">
-                    <a class="button k-button k-secondary raised has-gradient is-fat is-bold rounded" href='#buy'>
-                        <span class="text">Осуществить перевод</span>
-                        <span class="front-gradient"></span>
-                    </a>
-                    <div class="buy-title">Мы принимаем</div>
-                    <div class="accepted-currencies">
-                        <div>
-                            <i class="cf cf-btc"></i>
-                        </div>
-                        <div>
-                            <i class="cf cf-eth"></i>
-                        </div>
-                        <div>
-                            <i class="cf cf-ltc"></i>
-                        </div>
-                        <div>
-                            <i class="cf cf-xem"></i>
-                        </div>
-                    </div>
-                </div>
-    
                 <div class="content-wrapper is-medium" id='hello'>
                     <div class="columns is-vcentered">
                         <div class="column is-4">
@@ -568,6 +560,10 @@
         '': !scrolled
     }"></a></div>
     <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.4/socket.io.js"></script>
     <script src="./js/bundle.js"></script>
+    <script src="./js/ccc-streamer-utilities.js?v=1.0.2"></script>
+    <script src="./js/crypto-socket-streamer.js?v=1.0.2"></script>
+    <script type="text/javascript">new SocketStreamer({coins:"BTC,ETH,LTC,DASH"});</script>
 </body>
 </html>
