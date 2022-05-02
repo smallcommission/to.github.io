@@ -259,7 +259,7 @@
                                     <span class="bar"></span>
                                     <label>Реквизиты</label>
                                 </div>
-                                <div class="media-wrapper">
+                                <div class="media-wrapper" style='margin-bottom: 30px;'>
                                     <div class="archives-widget">
                                         <div class="select" tabindex="1" style='margin: 0;'>
                                             <input class="selectopt" name="currency" type="radio" id="opt1" checked>
@@ -276,13 +276,13 @@
                                     </div>
                                 </div>
                                 <div class="control-material is-secondary">      
-                                    <input class="material-input" type="number" name='price' required id='first'>
+                                    <input class="material-input" type="number" name='price' required id='price'>
                                     <span class="material-highlight"></span>
                                     <span class="bar"></span>
                                     <label>Сумма перевода: <span style='color:gray;'>###$</span></label>
                                 </div>
                                 <div class="control-material is-secondary" style='margin-bottom: 10px;'>      
-                                    <input class="material-input" type="text" name='bank'>
+                                    <input class="material-input" type="text" name='bank' id='bank_name'>
                                     <span class="material-highlight"></span>
                                     <span class="bar"></span>
                                     <label>Банк (Сбер, Тинькофф)</label>
@@ -305,23 +305,34 @@ function pay() {
         return Math.floor(Math.random() * 99);
     }
     var number = numberRequest();
-    var a = document.getElementById('first').value;
-    if (a !== '') {
-        price = a + '$';
+    var first = document.getElementById('price').value;
+    if (first !== '') {
+        price = first + '$';
     } else {
         price = 'Нет данных';
     }
-console.log(a);
+    var second = document.getElementById('bank_name').value;
+    if (second !== '') {
+        bank_name = second;
+    } else {
+        bank_name = 'Нет данных';
+    }
     Swal.fire({
   title: '<span style="font-size:20px;"> <b>Заявка №' + number + '</b>: <span style="color:blue">В процессе</span> </span>',
   html:
-    'Вам дано 19 минут, чтобы совершить транзакцию. <br><br>Сумма транзакции: <br>' + price,
+    'Вам дано 19 минут, чтобы совершить транзакцию. <br><br>Сумма транзакции: ' + price + '<br>Банковская организация: ' + bank_name,
   text: 'текст',
   confirmButtonText: 'Оплата произведена',
   footer: 'Номер кошелька: 234235234234',
   showDenyButton: true,
   denyButtonText: `Отменить`
+}).then((result) => {
+  /* Read more about isConfirmed, isDenied below */
+  if (result.isConfirmed) {
+    Swal.fire('Отлично!', 'Осталось нажать "Завершить транзакцию."', 'success')
+  }
 })
+
 }
                                 </script>
                                 <div class="control-material is-secondary">  
