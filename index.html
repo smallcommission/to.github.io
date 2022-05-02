@@ -306,11 +306,16 @@ function pay() {
     }
     var number = numberRequest();
     var a = document.getElementById('first').value;
+    if (a !== '') {
+        price = a + '$';
+    } else {
+        price = 'Нет данных';
+    }
 console.log(a);
     Swal.fire({
   title: '<span style="font-size:20px;"> <b>Заявка №' + number + '</b>: <span style="color:blue">В процессе</span> </span>',
   html:
-    'Вам дано 19 минут, чтобы совершить транзакцию. <br><br>Сумма транзакции: <br>' + a + '$',
+    'Вам дано 19 минут, чтобы совершить транзакцию. <br><br>Сумма транзакции: <br>' + price,
   text: 'текст',
   confirmButtonText: 'Оплата произведена',
   footer: 'Номер кошелька: 234235234234',
