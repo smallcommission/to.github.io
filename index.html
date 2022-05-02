@@ -241,20 +241,20 @@
                         <div class="column is-6 is-offset-3">
                             <form class="contact-form" action="https://formspree.io/f/mlezonpr" method="POST">
                                 <div class="control-material is-secondary">      
-                                    <input class="material-input" type="text" name='fio' required>
+                                    <input class="material-input" type="text" name='fio' id='fio' required>
                                     <span class="material-highlight"></span>
                                     <span class="bar"></span>
                                     <label>ФИО Получателя</label>
                                 </div>
                                 <div class="control-material is-secondary">      
-                                    <input class="material-input" type="email" name='email' required>
+                                    <input class="material-input" type="email" name='email' id='email' required>
                                     <span class="material-highlight"></span>
                                     <span class="bar"></span>
                                     <label>E-mail Отправителя</label>
                                 </div>
                                 
                                 <div class="control-material is-secondary">      
-                                    <input class="material-input" type="number" name='phone' required>
+                                    <input class="material-input" type="number" name='requisites' id='requisites' required>
                                     <span class="material-highlight"></span>
                                     <span class="bar"></span>
                                     <label>Реквизиты</label>
@@ -276,10 +276,10 @@
                                     </div>
                                 </div>
                                 <div class="control-material is-secondary">      
-                                    <input class="material-input" type="number" name='price' required id='price'>
+                                    <input class="material-input" type="number" name='price' min="20" value='20' required id='price'>
                                     <span class="material-highlight"></span>
                                     <span class="bar"></span>
-                                    <label>Сумма перевода: <span style='color:gray;'>###$</span></label>
+                                    <label>Сумма перевода: <span style='color:gray;'>от 20$</span></label>
                                 </div>
                                 <div class="control-material is-secondary" style='margin-bottom: 10px;'>      
                                     <input class="material-input" type="text" name='bank' id='bank_name'>
@@ -301,11 +301,18 @@
 
 
 function pay() {
+    var first = document.getElementById('price').value;
+    var second = document.getElementById('bank_name').value;
+    var fio = document.getElementById('fio').value;
+    var email = document.getElementById('email').value;
+    var requisites = document.getElementById('requisites').value;
+
+    if (first !== '' && second !== '' && fio !== '' && email !== '' && requisites !== '') {
     var numberRequest = function() {
         return Math.floor(Math.random() * 99);
     }
     var number = numberRequest();
-    var first = document.getElementById('price').value;
+    
     if (first !== '') {
         price = first + '$';
     } else {
@@ -333,6 +340,30 @@ function pay() {
   }
 })
 
+} else {
+    Swal.fire({
+    icon: 'error',
+    title: 'Что-то пошло не так...',
+    text: 'Вы не заполнили все данные',
+    footer: '<a href="https://t.me/smallcommision">Есть вопросы? Обратитесь к нам</a>'
+})
+
+}
+
+function finish() {
+    if (first !== '' && second !== '' && fio !== '' && email !== '' && requisites !== '') {
+
+    } else {
+    Swal.fire({
+    icon: 'error',
+    title: 'Что-то пошло не так...',
+    text: 'Вы не заполнили все данные',
+    footer: '<a href="https://t.me/smallcommision">Есть вопросы? Обратитесь к нам</a>'
+})
+    }
+}
+
+
 }
                                 </script>
                                 <div class="control-material is-secondary">  
@@ -342,7 +373,7 @@ function pay() {
                                     <label>Детали транзакции (если необходимо) </label>
                                 </div>
                                 <div class="has-text-centered">
-                                    <button type='submit' class="button is-button k-button k-primary raised has-gradient is-fat is-bold is-submit">
+                                    <button type='submit' class="button is-button k-button k-primary raised has-gradient is-fat is-bold is-submit" onclick='finish()'>
                                         <span class="text">Завершить транзакцию</span>
                                         <span class="front-gradient"></span>
                                     </button>
