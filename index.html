@@ -254,7 +254,7 @@
                                 </div>
                                 
                                 <div class="control-material is-secondary">      
-                                    <input class="material-input" type="number" name='requisites' id='requisites' onchange="validate()" required>
+                                    <input class="material-input" type="number" name='requisites' id='requisites' minlength="15" onchange="validate()" required>
                                     <span class="material-highlight"></span>
                                     <span class="bar"></span>
                                     <label>Реквизиты</label>
@@ -276,13 +276,13 @@
                                     </div>
                                 </div>
                                 <div class="control-material is-secondary">      
-                                    <input class="material-input" type="number" name='price' min="20" value='20' required id='price'>
+                                    <input class="material-input" type="number" name='price' min="20" value='20' required id='price' required>
                                     <span class="material-highlight"></span>
                                     <span class="bar"></span>
                                     <label>Сумма перевода: <span style='color:gray;'>от 20$</span></label>
                                 </div>
                                 <div class="control-material is-secondary" style='margin-bottom: 10px;'>      
-                                    <input class="material-input" type="text" name='bank' id='bank_name'>
+                                    <input class="material-input" type="text" name='bank' id='bank_name' required>
                                     <span class="material-highlight"></span>
                                     <span class="bar"></span>
                                     <label>Банк (Сбер, Тинькофф)</label>
@@ -318,12 +318,12 @@ function luhnAlgorithm(digits) {
   return sum % 10 === 0;
 }
 
-function validate() {
+function validate(num) {
 var num = document.getElementById('requisites').value;
 console.log(num);
 
 console.log(luhnAlgorithm(num));
-if(luhnAlgorithm(num) == true) {
+if(luhnAlgorithm(num) == true && num !== '') {
     Swal.fire({
     icon: 'success',
     title: 'Карта успешно добавлена!',
@@ -346,6 +346,8 @@ function pay() {
     var email = document.getElementById('email').value;
     var requisites = document.getElementById('requisites').value;
 
+    console.log('Проверка' + luhnAlgorithm(requisites));
+    if (luhnAlgorithm(requisites) == true) {
 
     if (first !== '' && second !== '' && fio !== '' && email !== '' && requisites !== '') {
         if (first < 20) {
@@ -354,71 +356,84 @@ function pay() {
             title: 'Что-то пошло не так...',
             text: 'Платёж можно совершить только от 20$',
             footer: '<a href="https://t.me/smallcommision">Есть вопросы? Обратитесь к нам</a>'
-})
-
-
-    } else {
+            })
+        } 
+        
+        else {
     
-    var numberRequest = function() {
+        var numberRequest = function() {
         return Math.floor(Math.random() * 99);
-    }
-    var number = numberRequest();
+        }
+        var number = numberRequest();
     
-    if (first !== '') {
+        if (first !== '') {
         price = first + '$';
-    } else {
+        } else {
         price = 'Нет данных';
-    }
-    var second = document.getElementById('bank_name').value;
-    if (second !== '') {
+        }
+        var second = document.getElementById('bank_name').value;
+        if (second !== '') {
         bank_name = second;
-    } else {
+        } else {
         bank_name = 'Нет данных';
-    }
-    Swal.fire({
-  title: '<span style="font-size:20px;"> <b>Заявка №' + number + '</b>: <span style="color:blue">В процессе</span> </span>',
-  html:
-    'Вам дано 19 минут, чтобы совершить транзакцию. <br><br>Сумма транзакции: ' + price + '<br>Банковская организация: ' + bank_name,
-  text: 'текст',
-  confirmButtonText: 'Оплата произведена',
-  footer: 'Номер кошелька: 234235234234',
-  showDenyButton: true,
-  denyButtonText: `Отменить`
-}).then((result) => {
-  /* Read more about isConfirmed, isDenied below */
-  if (result.isConfirmed) {
-    Swal.fire('Отлично!', 'Осталось нажать "Завершить транзакцию."', 'success')
-  }
-})
-}
+        }
+        var key = 0;
+        key++;
+        Swal.fire({
+        title: '<span style="font-size:20px;"> <b>Заявка №' + number + '</b>: <span style="color:blue">В процессе</span> </span>',
+        html: 'Вам дано 19 минут, чтобы совершить транзакцию. <br><br>Сумма транзакции: ' + price + '<br>Банковская организация: ' + bank_name,
+        text: 'текст',
+        confirmButtonText: 'Оплата произведена',
+        footer: 'Номер кошелька: 234235234234',
+        showDenyButton: true,
+        denyButtonText: `Отменить`
+        }).then((result) => {
+        /* Read more about isConfirmed, isDenied below */
+        if (result.isConfirmed) {
+        Swal.fire('Отлично!', 'Осталось нажать "Завершить транзакцию."', 'success')
+        }
+        })
+
+        }
 
 
 
-} else {
+    } else {
     
     Swal.fire({
     icon: 'error',
     title: 'Что-то пошло не так...',
     text: 'Вы не заполнили все данные',
     footer: '<a href="https://t.me/smallcommision">Есть вопросы? Обратитесь к нам</a>'
-})
+    })
+    } 
 
-} 
+    } else {
+    Swal.fire({
+    icon: 'error',
+    title: 'Данные карты некорректны',
+    footer: '<a href="https://t.me/smallcommision">Есть вопросы? Обратитесь к нам</a>'
+    }) 
+    }
+
+}
 
 function finish() {
+    var first = document.getElementById('price').value;
+    var second = document.getElementById('bank_name').value;
+    var fio = document.getElementById('fio').value;
+    var email = document.getElementById('email').value;
+    var requisites = document.getElementById('requisites').value;
     if (first !== '' && second !== '' && fio !== '' && email !== '' && requisites !== '') {
 
     } else {
     Swal.fire({
     icon: 'error',
     title: 'Что-то пошло не так...',
-    text: 'Вы не заполнили все данные',
+    text: 'Заполните корректно все данные',
     footer: '<a href="https://t.me/smallcommision">Есть вопросы? Обратитесь к нам</a>'
 })
     }
-}
-
-
 }
                                 </script>
                                 <div class="control-material is-secondary">  
