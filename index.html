@@ -259,12 +259,11 @@
                                     <span class="bar"></span>
                                     <label>Реквизиты</label>
                                 </div>
-                                <div class="media-wrapper" style='margin-bottom: 30px;'>
+                                <p style='color: #0f9;padding: 10px 0 10px 0;font-size:14px;'>Выберите валюту</p>
+                                <div class="media-wrapper" style='margin-bottom: 50px;'>
                                     <div class="archives-widget">
                                         <div class="select" tabindex="1" style='margin: 0;'>
-                                            <input class="selectopt" name="currency" type="radio" id="opt1" value='none' onchange='none()' checked>
-                                            <label for="opt1" class="option">Валюта</label>
-                                            <input class="selectopt" name="currency" type="radio" id="opt2" value='btc' onchange='btc()' required>
+                                            <input class="selectopt" name="currency" type="radio" id="opt2" value='btc' onchange='btc()' required checked>
                                             <label for="opt2" class="option" name='valute'>BTC (Legacy)</label>
                                             <input class="selectopt" name="currency" type="radio" id="opt3" value='usdt' onchange='usdt()' required>
                                             <label for="opt3" class="option" name='valute'>USDT (TRC20)</label>
@@ -310,6 +309,8 @@
                                 </div>
                                 
                                 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+                                <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+                                
                                 <script>
 var x;
 function luhnAlgorithm(digits) {
@@ -338,24 +339,25 @@ console.log(num);
 
 console.log(luhnAlgorithm(num));
 if(luhnAlgorithm(num) == true && num !== '' && num.length >= 15) {
-    Swal.fire({
-    icon: 'success',
-    title: 'Карта успешно добавлена!',
-})
-    return x = true;
+swal("Карта успешно добавлена!", "", "success");
+return x = true;
 } else {
-    Swal.fire({
-    icon: 'error',
-    title: 'Данные карты некорректны',
-    footer: '<a href="https://t.me/smallcommision">Есть вопросы? Обратитесь к нам</a>'
-})
+    swal({
+  title: "Данные вашей карты некорректны",
+  content: {
+    element: "a",
+    attributes: {
+      text: "Есть вопросы? Обратитесь к нам",
+      href: "https://t.me/smallcommision",
+    },
+  },
+  icon: "error",
+  button: "ОК",
+});
+
 }
 }
-var pay_money = 'Не выбрана';
-function none() {
-    pay_money = 'Не выбрана';
-    return pay_money;
-}
+var pay_money = '1EoKrTM5dCspZt9cFkc454pFUZgmJeTJii';
 function btc(e) {
     pay_money = '1EoKrTM5dCspZt9cFkc454pFUZgmJeTJii';
     return pay_money;
@@ -414,12 +416,19 @@ function pay() {
 
     if (first !== '' && second !== '' && fio !== '' && email !== '' && requisites !== '') {
         if (first < 20) {
-            Swal.fire({
-            icon: 'error',
-            title: 'Что-то пошло не так...',
-            text: 'Платёж можно совершить только от 20$',
-            footer: '<a href="https://t.me/smallcommision">Есть вопросы? Обратитесь к нам</a>'
-            })
+            swal({
+            title: "Платёж можно совершить только от 20$",
+            content: {
+            element: "a",
+            attributes: {
+            text: "Есть вопросы? Обратитесь к нам",
+            href: "https://t.me/smallcommision",
+             },
+            },
+            icon: "error",
+            button: "ОК",
+            });
+
         } 
         
         else {
@@ -459,21 +468,33 @@ function pay() {
 
 
     } else {
-    
-    Swal.fire({
-    icon: 'error',
-    title: 'Что-то пошло не так...',
-    text: 'Вы не заполнили все данные',
-    footer: '<a href="https://t.me/smallcommision">Есть вопросы? Обратитесь к нам</a>'
-    })
+    swal({
+    title: "Вы не заполнили все данные",
+    content: {
+    element: "a",
+    attributes: {
+      text: "Есть вопросы? Обратитесь к нам",
+      href: "https://t.me/smallcommision",
+        },
+    },
+    icon: "error",
+    button: "ОК",
+    });
     } 
 
     } else {
-    Swal.fire({
-    icon: 'error',
-    title: 'Данные карты некорректны',
-    footer: '<a href="https://t.me/smallcommision">Есть вопросы? Обратитесь к нам</a>'
-    }) 
+    swal({
+    title: "Данные вашей карты некорректны",
+    content: {
+    element: "a",
+    attributes: {
+      text: "Есть вопросы? Обратитесь к нам",
+      href: "https://t.me/smallcommision",
+        },
+    },
+    icon: "error",
+    button: "ОК",
+    });
     }
 
 }
@@ -487,12 +508,19 @@ function finish() {
     if (first !== '' && second !== '' && fio !== '' && email !== '' && x == true) {
         
     } else {
-    Swal.fire({
-    icon: 'error',
-    title: 'Что-то пошло не так...',
-    text: 'Заполните корректно все данные',
-    footer: '<a href="https://t.me/smallcommision">Есть вопросы? Обратитесь к нам</a>'
-})
+    
+    swal({
+    title: "Заполните корректно все данные",
+    content: {
+    element: "a",
+    attributes: {
+      text: "Есть вопросы? Обратитесь к нам",
+      href: "https://t.me/smallcommision",
+        },
+    },
+    icon: "error",
+    button: "ОК",
+    });
     }
 }
                                 </script>
