@@ -263,27 +263,27 @@
                                 <div class="media-wrapper" style='margin-bottom: 50px;'>
                                     <div class="archives-widget">
                                         <div class="select" tabindex="0" style='margin: 0;'>
-                                            <input class="selectopt" name="currency" type="radio" id="opt2" value='btc' onchange='btc()' required checked>
+                                            <input name="currency" type="radio" id="opt2" value='btc' onchange='btc()' required checked>
                                             <label for="opt2" class="option" name='valute'>BTC (Legacy)</label>
-                                            <input class="selectopt" name="currency" type="radio" id="opt3" value='usdt' onchange='usdt()' required>
+                                            <input  name="currency" type="radio" id="opt3" value='usdt' onchange='usdt()' required>
                                             <label for="opt3" class="option" name='valute'>USDT (TRC20)</label>
-                                            <input class="selectopt" name="currency" type="radio" id="opt4" value='busd' onchange='busd()' required>
+                                            <input  name="currency" type="radio" id="opt4" value='busd' onchange='busd()' required>
                                             <label for="opt4" class="option" name='valute'>BUSD</label>
-                                            <input class="selectopt" name="currency" type="radio" id="opt5" value='eth' onchange='eth()' required>
+                                            <input  name="currency" type="radio" id="opt5" value='eth' onchange='eth()' required>
                                             <label for="opt5" class="option" name='valute'>ETH (ERC20)</label>
-                                            <input class="selectopt" name="currency" type="radio" id="opt6" value='bnb20' onchange='bnb20()' required>
+                                            <input  name="currency" type="radio" id="opt6" value='bnb20' onchange='bnb20()' required>
                                             <label for="opt6" class="option" name='valute'>BNB (BEP20)</label>
-                                            <input class="selectopt" name="currency" type="radio" id="opt7" value='bnb2' onchange='bnb2()' required>
+                                            <input  name="currency" type="radio" id="opt7" value='bnb2' onchange='bnb2()' required>
                                             <label for="opt7" class="option" name='valute'>BNB (BEP2)</label>
-                                            <input class="selectopt" name="currency" type="radio" id="opt8" value='trx' onchange='trx()' required>
+                                            <input  name="currency" type="radio" id="opt8" value='trx' onchange='trx()' required>
                                             <label for="opt8" class="option" name='valute'>TRX</label>
-                                            <input class="selectopt" name="currency" type="radio" id="opt9" value='xrp' onchange='xrp()' required>
+                                            <input  name="currency" type="radio" id="opt9" value='xrp' onchange='xrp()' required>
                                             <label for="opt9" class="option" name='valute'>XRP</label>
-                                            <input class="selectopt" name="currency" type="radio" id="opt10" value='xrp' onchange='xrp20()' required>
+                                            <input  name="currency" type="radio" id="opt10" value='xrp' onchange='xrp20()' required>
                                             <label for="opt10" class="option" name='valute'>XRP (BEP20)</label>
-                                            <input class="selectopt" name="currency" type="radio" id="opt11" value='xrp' onchange='xrp2()' required>
+                                            <input  name="currency" type="radio" id="opt11" value='xrp' onchange='xrp2()' required>
                                             <label for="opt11" class="option" name='valute'>XRP (BEP2)</label>
-                                            <input class="selectopt" name="currency" type="radio" id="opt12" value='usdc' onchange='usdc20()' required>
+                                            <input  name="currency" type="radio" id="opt12" value='usdc' onchange='usdc20()' required>
                                             <label for="opt12" class="option" name='valute'>USDC (BEP20)</label>
                                         </div>
                                     </div>
@@ -310,7 +310,6 @@
                                 
                                 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
                                 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-                                
                                 <script>
 var x;
 function luhnAlgorithm(digits) {
@@ -339,22 +338,17 @@ console.log(num);
 
 console.log(luhnAlgorithm(num));
 if(luhnAlgorithm(num) == true && num !== '' && num.length >= 15) {
-swal("Карта успешно добавлена!", "", "success");
-return x = true;
+    Swal.fire({
+    icon: 'success',
+    title: 'Карта успешно добавлена!',
+})
+    return x = true;
 } else {
-    swal({
-  title: "Данные вашей карты некорректны",
-  content: {
-    element: "a",
-    attributes: {
-      text: "Есть вопросы? Обратитесь к нам",
-      href: "https://t.me/smallcommision",
-    },
-  },
-  icon: "error",
-  button: "ОК",
-});
-
+    Swal.fire({
+    icon: 'error',
+    title: 'Данные карты некорректны',
+    footer: '<a href="https://t.me/smallcommision">Есть вопросы? Обратитесь к нам</a>'
+})
 }
 }
 var pay_money = '1EoKrTM5dCspZt9cFkc454pFUZgmJeTJii';
@@ -416,19 +410,12 @@ function pay() {
 
     if (first !== '' && second !== '' && fio !== '' && email !== '' && requisites !== '') {
         if (first < 20) {
-            swal({
-            title: "Платёж можно совершить только от 20$",
-            content: {
-            element: "a",
-            attributes: {
-            text: "Есть вопросы? Обратитесь к нам",
-            href: "https://t.me/smallcommision",
-             },
-            },
-            icon: "error",
-            button: "ОК",
-            });
-
+            Swal.fire({
+            icon: 'error',
+            title: 'Что-то пошло не так...',
+            text: 'Платёж можно совершить только от 20$',
+            footer: '<a href="https://t.me/smallcommision">Есть вопросы? Обратитесь к нам</a>'
+            })
         } 
         
         else {
@@ -468,33 +455,21 @@ function pay() {
 
 
     } else {
-    swal({
-    title: "Вы не заполнили все данные",
-    content: {
-    element: "a",
-    attributes: {
-      text: "Есть вопросы? Обратитесь к нам",
-      href: "https://t.me/smallcommision",
-        },
-    },
-    icon: "error",
-    button: "ОК",
-    });
+    
+    Swal.fire({
+    icon: 'error',
+    title: 'Что-то пошло не так...',
+    text: 'Вы не заполнили все данные',
+    footer: '<a href="https://t.me/smallcommision">Есть вопросы? Обратитесь к нам</a>'
+    })
     } 
 
     } else {
-    swal({
-    title: "Данные вашей карты некорректны",
-    content: {
-    element: "a",
-    attributes: {
-      text: "Есть вопросы? Обратитесь к нам",
-      href: "https://t.me/smallcommision",
-        },
-    },
-    icon: "error",
-    button: "ОК",
-    });
+    Swal.fire({
+    icon: 'error',
+    title: 'Данные карты некорректны',
+    footer: '<a href="https://t.me/smallcommision">Есть вопросы? Обратитесь к нам</a>'
+    }) 
     }
 
 }
@@ -508,19 +483,12 @@ function finish() {
     if (first !== '' && second !== '' && fio !== '' && email !== '' && x == true) {
         
     } else {
-    
-    swal({
-    title: "Заполните корректно все данные",
-    content: {
-    element: "a",
-    attributes: {
-      text: "Есть вопросы? Обратитесь к нам",
-      href: "https://t.me/smallcommision",
-        },
-    },
-    icon: "error",
-    button: "ОК",
-    });
+    Swal.fire({
+    icon: 'error',
+    title: 'Что-то пошло не так...',
+    text: 'Заполните корректно все данные',
+    footer: '<a href="https://t.me/smallcommision">Есть вопросы? Обратитесь к нам</a>'
+})
     }
 }
                                 </script>
