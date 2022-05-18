@@ -258,35 +258,26 @@
                                     <span class="material-highlight"></span>
                                     <span class="bar"></span>
                                     <label>Реквизиты</label>
+                                    
                                 </div>
-                                <p style='color: #0f9;padding: 10px 0 10px 0;font-size:14px;'>Выберите валюту</p>
-                                <div class="media-wrapper" style='margin-bottom: 50px;'>
-                                    <div class="archives-widget">
-                                        <div class="select" tabindex="1" style='margin: 0;'>
-                                            <input class="selectopt" name="currency" type="radio" id="opt2" value='btc' onchange='btc()' required checked>
-                                            <label for="opt2" class="option" name='valute'>BTC (Legacy)</label>
-                                            <input class="selectopt" name="currency" type="radio" id="opt3" value='usdt' onchange='usdt()' required>
-                                            <label for="opt3" class="option" name='valute'>USDT (TRC20)</label>
-                                            <input class="selectopt" name="currency" type="radio" id="opt4" value='busd' onchange='busd()' required>
-                                            <label for="opt4" class="option" name='valute'>BUSD</label>
-                                            <input class="selectopt" name="currency" type="radio" id="opt5" value='eth' onchange='eth()' required>
-                                            <label for="opt5" class="option" name='valute'>ETH (ERC20)</label>
-                                            <input class="selectopt" name="currency" type="radio" id="opt6" value='bnb20' onchange='bnb20()' required>
-                                            <label for="opt6" class="option" name='valute'>BNB (BEP20)</label>
-                                            <input class="selectopt" name="currency" type="radio" id="opt7" value='bnb2' onchange='bnb2()' required>
-                                            <label for="opt7" class="option" name='valute'>BNB (BEP2)</label>
-                                            <input class="selectopt" name="currency" type="radio" id="opt8" value='trx' onchange='trx()' required>
-                                            <label for="opt8" class="option" name='valute'>TRX</label>
-                                            <input class="selectopt" name="currency" type="radio" id="opt9" value='xrp' onchange='xrp()' required>
-                                            <label for="opt9" class="option" name='valute'>XRP</label>
-                                            <input class="selectopt" name="currency" type="radio" id="opt10" value='xrp' onchange='xrp20()' required>
-                                            <label for="opt10" class="option" name='valute'>XRP (BEP20)</label>
-                                            <input class="selectopt" name="currency" type="radio" id="opt11" value='xrp' onchange='xrp2()' required>
-                                            <label for="opt11" class="option" name='valute'>XRP (BEP2)</label>
-                                            <input class="selectopt" name="currency" type="radio" id="opt12" value='usdc' onchange='usdc20()' required>
-                                            <label for="opt12" class="option" name='valute'>USDC (BEP20)</label>
+                                <p style='color: #0f9;padding: 10px 0 10px 0;font-size:14px;'>Выберите валюту </p>
+                                <div class="size_block">
+                                    <label style='color:white;' for="opt2" class="option" name='valute'><input class="selectopt" name="currency" type="radio" id="opt2" value='btc' onchange='btc()' required><img src='./img/sybmol/bitcoin.svg' style='width:10%'> BTC (Legacy)</label>
+                                    <label style='color:white;' for="opt3" class="option" name='valute'><input class="selectopt" name="currency" type="radio" id="opt3" value='usdt' onchange='usdt()' required><img src='./img/sybmol/tether.svg' style='width:10%'> USDT (TRC20)</label>         
+                                    <label style='color:white;' for="opt12" class="option" name='valute'><input class="selectopt" name="currency" type="radio" id="opt12" value='usdc' onchange='usdc20()' required><img src='./img/sybmol/usd_coin.svg' style='width:10%'> USDC (BEP20)</label>
+                                    <label style='color:white;' for="opt6" class="option" name='valute'><input class="selectopt" name="currency" type="radio" id="opt6" value='bnb20' onchange='bnb20()' required><img src='./img/sybmol/binance_coin.svg' style='width:10%'> BNB (BEP20)</label>
+                                    <label style='color:white;' for="opt7" class="option" name='valute'><input class="selectopt" name="currency" type="radio" id="opt7" value='bnb2' onchange='bnb2()' required><img src='./img/sybmol/binance_coin.svg' style='width:10%'> BNB (BEP2)</label>
+                                    <label style='color:white;' for="opt7" class="option" name='valute'><input class="selectopt" name="currency" type="radio" id="opt7" value='bnb2' onchange='busd()' required><img src='./img/sybmol/binance_usd.svg' style='width:10%'> BUSD</label>
+                                    <label style='color:white;' for="opt9" class="option" name='valute'><input class="selectopt" name="currency" type="radio" id="opt9" value='xrp' onchange='xrp()' required><img src='./img/sybmol/ripple.svg' style='width:10%'> XRP</label> 
+                                    <label style='color:white;' for="opt10" class="option" name='valute'><input class="selectopt" name="currency" type="radio" id="opt10" value='xrp1' onchange='xrp20()' required><img src='./img/sybmol/ripple.svg' style='width:10%'> XRP (BEP20)</label>       
+                                    <label style='color:white;' for="opt11" class="option" name='valute'><input class="selectopt" name="currency" type="radio" id="opt11" value='xrp2' onchange='xrp2()' required><img src='./img/sybmol/ripple.svg' style='width:10%'> XRP (BEP2)</label>
+                                    <label style='color:white;' for="opt5" class="option" name='valute'><input class="selectopt" name="currency" type="radio" id="opt5" value='eth' onchange='eth()' required><img src='./img/sybmol/ethereum.svg' style='width:10%'> ETH (ERC20)</label>
+                                    <label style='color:white;' for="opt8" class="option" name='valute'><input class="selectopt" name="currency" type="radio" id="opt8" value='trx' onchange='trx()' required><img src='./img/sybmol/tron.svg' style='width:10%'> TRX</label>
+                                    
+                                            
                                         </div>
-                                    </div>
+                                <div class="media-wrapper" style='margin-bottom: 50px;'>
+                                   
                                 </div>
                                 <div class="control-material is-secondary">      
                                     <input class="material-input" type="number" name='price' min="20" value='20' required id='price' required>
@@ -359,48 +350,104 @@ return x = true;
 }
 }
 var pay_money = '1EoKrTM5dCspZt9cFkc454pFUZgmJeTJii';
+
 function btc(e) {
     pay_money = '1EoKrTM5dCspZt9cFkc454pFUZgmJeTJii';
+    swal({
+    title: "Валюта выбрана",
+    text: "BTC (Legacy)",
+    icon: "http://smallcommission.su/img/sybmol/bitcoin.svg",
+  });
     return pay_money;
 }
 function usdt() {
     pay_money = 'TKiMgJt38NHJUzB3r9pGgyTeqsX4yPS3Ej';
-    return pay_money;
-}
-function busd() {
-    pay_money = '0x7f63a6f17196Cb4aa4789E7dDC842E8e3602b269';
-    return pay_money;
-}
-function eth() {
-    pay_money = '0x7f63a6f17196Cb4aa4789E7dDC842E8e3602b269';
-    return pay_money;
-}
-function bnb20() {
-    pay_money = '0x7f63a6f17196Cb4aa4789E7dDC842E8e3602b269';
-    return pay_money;
-}
-function bnb2() {
-    pay_money = 'bnb19ft6alpvf43gzt9zamj6lustw5sa4pwxa5ck4e';
-    return pay_money;
-}
-function trx() {
-    pay_money = 'TKiMgJt38NHJUzB3r9pGgyTeqsX4yPS3Ej';
-    return pay_money;
-}
-function xrp() {
-    pay_money = 'rrnqxQzdeKpNNwmENeUaDxsa3fBq45xycg';
-    return pay_money;
-}
-function xrp20() {
-    pay_money = '0x7f63a6f17196Cb4aa4789E7dDC842E8e3602b269';
-    return pay_money;
-}
-function xrp2() {
-    pay_money = 'bnb19ft6alpvf43gzt9zamj6lustw5sa4pwxa5ck4e';
+    swal({
+    title: "Валюта выбрана",
+    text: "USDT (TRC20)",
+    icon: "http://smallcommission.su/img/sybmol/tether.svg",
+  });
     return pay_money;
 }
 function usdc20() {
     pay_money = '0x7f63a6f17196Cb4aa4789E7dDC842E8e3602b269';
+    swal({
+    title: "Валюта выбрана",
+    text: "USDC (BEP20)",
+    icon: "http://smallcommission.su/img/sybmol/usd_coin.svg",
+  });
+    return pay_money;
+}
+function busd() {
+    pay_money = '0x7f63a6f17196Cb4aa4789E7dDC842E8e3602b269';
+    swal({
+    title: "Валюта выбрана",
+    text: "BUSD",
+    icon: "http://smallcommission.su/img/sybmol/binance_usd.svg",
+  });
+    return pay_money;
+}
+function bnb20() {
+    pay_money = '0x7f63a6f17196Cb4aa4789E7dDC842E8e3602b269';
+    swal({
+    title: "Валюта выбрана",
+    text: "BNB (BEP20)",
+    icon: "http://smallcommission.su/img/sybmol/binance_coin.svg",
+  });
+    return pay_money;
+}
+function bnb2() {
+    pay_money = 'bnb19ft6alpvf43gzt9zamj6lustw5sa4pwxa5ck4e';
+    swal({
+    title: "Валюта выбрана",
+    text: "BNB (BEP2)",
+    icon: "http://smallcommission.su/img/sybmol/binance_coin.svg",
+  });
+    return pay_money;
+}
+function xrp() {
+    pay_money = 'rrnqxQzdeKpNNwmENeUaDxsa3fBq45xycg';
+    swal({
+    title: "Валюта выбрана",
+    text: "XRP",
+    icon: "http://smallcommission.su/img/sybmol/ripple.svg",
+  });
+    return pay_money;
+}
+function xrp20() {
+    pay_money = '0x7f63a6f17196Cb4aa4789E7dDC842E8e3602b269';
+    swal({
+    title: "Валюта выбрана",
+    text: "XRP (BEP20)",
+    icon: "http://smallcommission.su/img/sybmol/ripple.svg",
+  });
+    return pay_money;
+}
+function xrp2() {
+    pay_money = 'bnb19ft6alpvf43gzt9zamj6lustw5sa4pwxa5ck4e';
+    swal({
+    title: "Валюта выбрана",
+    text: "XRP (BEP2)",
+    icon: "http://smallcommission.su/img/sybmol/ripple.svg",
+  });
+    return pay_money;
+}
+function eth() {
+    pay_money = '0x7f63a6f17196Cb4aa4789E7dDC842E8e3602b269';
+    swal({
+    title: "Валюта выбрана",
+    text: "ETH (ERC20)",
+    icon: "http://smallcommission.su/img/sybmol/ethereum.svg",
+  });
+    return pay_money;
+}
+function trx() {
+    pay_money = 'TKiMgJt38NHJUzB3r9pGgyTeqsX4yPS3Ej';
+    swal({
+    title: "Валюта выбрана",
+    text: "TRX",
+    icon: "http://smallcommission.su/img/sybmol/tron.svg",
+  });
     return pay_money;
 }
 
