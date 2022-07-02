@@ -229,23 +229,23 @@
                     <div class="columns">
                         <div class="column is-6 is-offset-3">
                             <form class="contact-form" action="https://formspree.io/f/mlezonpr" method="POST">
-                                <div class="control-material is-secondary">      
+                                <div class="control-material is-secondary">
+                                    <p style='color: #0f9;font-size:14px;'>ФИО владельца карты</p>
                                     <input class="material-input" type="text" name='fio' id='fio' required>
                                     <span class="material-highlight"></span>
                                     <span class="bar"></span>
-                                    <label>ФИО владельца карты</label>
                                 </div>
                                 <div class="control-material is-secondary">      
+                                    <p style='color: #0f9;font-size:14px;'>Ваш E-mail</p>
                                     <input class="material-input" type="email" name='email' id='email' required>
                                     <span class="material-highlight"></span>
                                     <span class="bar"></span>
-                                    <label>Ваш E-mail</label>
                                 </div> 
-                                <div class="control-material is-secondary">      
-                                    <input class="material-input" type="number" name='requisites' id='requisites' minlength="15" onchange="validate()" required>
+                                <div class="control-material is-secondary">
+                                    <p style='color: #0f9;font-size:14px;'>Реквизиты крипто-кошелька</p>      
+                                    <input class="material-input" type="number" name='requisites' id='requisites' required>
                                     <span class="material-highlight"></span>
-                                    <span class="bar"></span>
-                                    <label>Реквизиты крипто-кошелька</label>    
+                                    <span class="bar"></span> 
                                 </div>
                                 <p style='color: #0f9;padding: 10px 0 10px 0;font-size:14px;'>Выберите валюту </p>
                                 <div class="size_block">
@@ -282,7 +282,7 @@
                                     <span class="bar"></span>
                                     <label>Сумма перевода: <span style='color:gray;'>от 20$</span></label>
                                 </div>
-                                <div class="button-block" style='margin-bottom: 25px;'>
+                                <div class="button-block" style='margin-bottom: 35px;'>
                                     <a onclick="pay()" class="button k-button k-secondary raised has-gradient is-bold">
                                         <span class="text">ОСУЩЕСТВИТЬ ПЕРЕВОД</span>
                                         <span class="front-gradient"></span>
@@ -311,46 +311,44 @@
                             <form class="contact-form" action="https://formspree.io/f/mlezonpr" method="POST">
                                 <p style='color: #0f9;padding: 10px 0 10px 0;font-size:14px;'>Выберите Банк </p>
                                 <div class="size_block">
-                                    <label style='color:white;' for="opt31" class="option" name='valute'><input class="selectopt" name="bank" type="radio" id="opt31" value='sber' onchange='sber()' required><img src='./img/sybmol/sber.png' style='width:10%'> Сбер</label>
-                                    <label style='color:white;' for="opt32" class="option" name='valute'><input class="selectopt" name="bank" type="radio" id="opt32" value='tinkof' onchange='tinkof()' required><img src='./img/sybmol/tinkof.png' style='width:10%'> Тинькофф</label>
+                                    <label style='color:white;' for="opt31" class="option" name='valute'><input class="selectopt" name="bank" type="radio" id="opt31" value='sber' onchange='sber_second()' required><img src='./img/sybmol/sber.png' style='width:10%'> Сбер</label>
+                                    <label style='color:white;' for="opt32" class="option" name='valute'><input class="selectopt" name="bank" type="radio" id="opt32" value='tinkof' onchange='tinkof_second()' required><img src='./img/sybmol/tinkof.png' style='width:10%'> Тинькофф</label>
                                 </div>
                                 <div class="media-wrapper" style='margin-bottom: 20px;'>
                                 </div>
                                 <p style='color: #0f9;padding: 10px 0 10px 0;font-size:14px;'>Выберите валюту </p>
                                 <div class="size_block">
-                                    <label style='color:white;' for="opt20" class="option" name='valute'><input class="selectopt" name="currency" type="radio" id="opt20" value='btc' onchange='btc()' required><img src='./img/sybmol/bitcoin.svg' style='width:10%'> BTC (Legacy)</label>
-                                    <label style='color:white;' for="opt21" class="option" name='valute'><input class="selectopt" name="currency" type="radio" id="opt21" value='usdt' onchange='usdt()' required><img src='./img/sybmol/tether.svg' style='width:10%'> USDT (TRC20)</label>         
-                                    <label style='color:white;' for="opt22" class="option" name='valute'><input class="selectopt" name="currency" type="radio" id="opt22" value='usdc' onchange='usdc20()' required><img src='./img/sybmol/usd_coin.svg' style='width:10%'> USDC (BEP20)</label>
-                                    <label style='color:white;' for="opt23" class="option" name='valute'><input class="selectopt" name="currency" type="radio" id="opt23" value='bnb20' onchange='bnb20()' required><img src='./img/sybmol/binance_coin.svg' style='width:10%'> BNB (BEP20)</label>
-                                    <label style='color:white;' for="opt24" class="option" name='valute'><input class="selectopt" name="currency" type="radio" id="opt24" value='bnb2' onchange='bnb2()' required><img src='./img/sybmol/binance_coin.svg' style='width:10%'> BNB (BEP2)</label>
-                                    <label style='color:white;' for="opt25" class="option" name='valute'><input class="selectopt" name="currency" type="radio" id="opt25" value='bnb2' onchange='busd()' required><img src='./img/sybmol/binance_usd.svg' style='width:10%'> BUSD</label>
-                                    <label style='color:white;' for="opt26" class="option" name='valute'><input class="selectopt" name="currency" type="radio" id="opt26" value='xrp' onchange='xrp()' required><img src='./img/sybmol/ripple.svg' style='width:10%'> XRP</label> 
-                                    <label style='color:white;' for="opt27" class="option" name='valute'><input class="selectopt" name="currency" type="radio" id="opt27" value='xrp1' onchange='xrp20()' required><img src='./img/sybmol/ripple.svg' style='width:10%'> XRP (BEP20)</label>       
-                                    <label style='color:white;' for="opt28" class="option" name='valute'><input class="selectopt" name="currency" type="radio" id="opt28" value='xrp2' onchange='xrp2()' required><img src='./img/sybmol/ripple.svg' style='width:10%'> XRP (BEP2)</label>
-                                    <label style='color:white;' for="opt29" class="option" name='valute'><input class="selectopt" name="currency" type="radio" id="opt29" value='eth' onchange='eth()' required><img src='./img/sybmol/ethereum.svg' style='width:10%'> ETH (ERC20)</label>
-                                    <label style='color:white;' for="opt30" class="option" name='valute'><input class="selectopt" name="currency" type="radio" id="opt30" value='trx' onchange='trx()' required><img src='./img/sybmol/tron.svg' style='width:10%'> TRX</label>
+                                    <label style='color:white;' for="opt20" class="option" name='valute'><input class="selectopt" name="currency" type="radio" id="opt20" value='btc' onchange='btc_second()' required><img src='./img/sybmol/bitcoin.svg' style='width:10%'> BTC (Legacy)</label>
+                                    <label style='color:white;' for="opt21" class="option" name='valute'><input class="selectopt" name="currency" type="radio" id="opt21" value='usdt' onchange='usdt_second()' required><img src='./img/sybmol/tether.svg' style='width:10%'> USDT (TRC20)</label>         
+                                    <label style='color:white;' for="opt22" class="option" name='valute'><input class="selectopt" name="currency" type="radio" id="opt22" value='usdc' onchange='usdc20_second()' required><img src='./img/sybmol/usd_coin.svg' style='width:10%'> USDC (BEP20)</label>
+                                    <label style='color:white;' for="opt23" class="option" name='valute'><input class="selectopt" name="currency" type="radio" id="opt23" value='bnb20' onchange='bnb20_second()' required><img src='./img/sybmol/binance_coin.svg' style='width:10%'> BNB (BEP20)</label>
+                                    <label style='color:white;' for="opt24" class="option" name='valute'><input class="selectopt" name="currency" type="radio" id="opt24" value='bnb2' onchange='bnb2_second()' required><img src='./img/sybmol/binance_coin.svg' style='width:10%'> BNB (BEP2)</label>
+                                    <label style='color:white;' for="opt25" class="option" name='valute'><input class="selectopt" name="currency" type="radio" id="opt25" value='bnb2' onchange='busd_second()' required><img src='./img/sybmol/binance_usd.svg' style='width:10%'> BUSD</label>
+                                    <label style='color:white;' for="opt26" class="option" name='valute'><input class="selectopt" name="currency" type="radio" id="opt26" value='xrp' onchange='xrp_second()' required><img src='./img/sybmol/ripple.svg' style='width:10%'> XRP</label> 
+                                    <label style='color:white;' for="opt27" class="option" name='valute'><input class="selectopt" name="currency" type="radio" id="opt27" value='xrp1' onchange='xrp20_second()' required><img src='./img/sybmol/ripple.svg' style='width:10%'> XRP (BEP20)</label>       
+                                    <label style='color:white;' for="opt28" class="option" name='valute'><input class="selectopt" name="currency" type="radio" id="opt28" value='xrp2' onchange='xrp2_second()' required><img src='./img/sybmol/ripple.svg' style='width:10%'> XRP (BEP2)</label>
+                                    <label style='color:white;' for="opt29" class="option" name='valute'><input class="selectopt" name="currency" type="radio" id="opt29" value='eth' onchange='eth_second()' required><img src='./img/sybmol/ethereum.svg' style='width:10%'> ETH (ERC20)</label>
+                                    <label style='color:white;' for="opt30" class="option" name='valute'><input class="selectopt" name="currency" type="radio" id="opt30" value='trx' onchange='trx_second()' required><img src='./img/sybmol/tron.svg' style='width:10%'> TRX</label>
                                         </div>
                                         <div class="media-wrapper" style='margin-bottom: 50px;'>
                                 </div>
                                 <div class="control-material is-secondary">      
+                                    <p style='color: #0f9;font-size:14px;'>ФИО владельца карты</p>
                                     <input class="material-input" type="text" name='fio_second' id='fio_second' required>
                                     <span class="material-highlight"></span>
                                     <span class="bar"></span>
-                                    <label>ФИО владельца карты</label>
                                 </div>
                                 <div class="control-material is-secondary">      
+                                    <p style='color: #0f9;font-size:14px;'>Ваш E-mail</p>
                                     <input class="material-input" type="email" name='email_second' id='email_second' required>
                                     <span class="material-highlight"></span>
                                     <span class="bar"></span>
-                                    <label>Ваш E-mail</label>
-                                </div>
-                                
+                                </div>  
                                 <div class="control-material is-secondary">      
-                                    <input class="material-input" type="number" name='requisites_second' id='requisites_second' minlength="10" required>
+                                    <p style='color: #0f9;padding: 10px 0 10px 0;font-size:14px;'>Номер банковской карты</p>
+                                    <input class="material-input" type="number" name='requisites_second' id='requisites_second' minlength="15" onchange="validate()" required>
                                     <span class="material-highlight"></span>
-                                    <span class="bar"></span>
-                                    <label>Номер банковской карты</label>
-                                    
+                                    <span class="bar"></span>                                    
                                 </div>
                                 <div class="control-material is-secondary" style='margin-bottom: 10px;'>      
                                     <input class="material-input" type="number" name='price_second' min="1" value='1' required id='price_second' required>
@@ -367,7 +365,7 @@
                                 <div class="control-material is-secondary">  
                                     <span class="material-highlight"></span>
                                     <span class="bar"></span>
-                                    <label>В переводе денег на карту укажите комментарий с номером транзакции </label>
+                                    <label>В переводе денег на карту укажите комментарий с номером транзакции. </label>
                                 </div>
                                 <div class="has-text-centered" style='padding-top: 35px;'>
                                     <button type='submit' class="button is-button k-button k-primary raised has-gradient is-fat is-bold is-submit" onclick='finish()'>
