@@ -16,7 +16,7 @@ function luhnAlgorithm(digits) {
 
 // GiraffeWeb Валидация реквизитов карты
 function validate(num) {
-var num = document.getElementById('requisites').value;
+var num = document.getElementById('requisites_second').value;
 // console.log(num);
 // console.log(luhnAlgorithm(num));
 if(luhnAlgorithm(num) == true && num !== '' && num.length >= 15) {
@@ -40,7 +40,7 @@ return x = true;
 // GiraffeWeb Реквизиты стандартного кошелька
 var pay_money = '1EoKrTM5dCspZt9cFkc454pFUZgmJeTJii';
 // GiraffeWeb Переменная банка, пустое значение до выбора
-var bank = '';
+var bank = 'Сбер';
 // GiraffeWeb Выбор валют
 function btc(e) {
     pay_money = '1EoKrTM5dCspZt9cFkc454pFUZgmJeTJii';
@@ -219,12 +219,8 @@ function pay() {
     var fio = document.getElementById('fio').value;
     var email = document.getElementById('email').value;
     var requisites = document.getElementById('requisites').value;
-    var btc = 'test';
 
-    console.log('Проверка' + luhnAlgorithm(requisites));
-    if (luhnAlgorithm(requisites) == true) {
-
-    if (first !== '' && bank !== '' && fio !== '' && email !== '' && requisites !== '') {
+    if (first !== ''  && fio !== '' && email !== '' && requisites !== '') {
         if (first < 20) {
             swal({
             title: "Платёж можно совершить только от 20$",
@@ -259,7 +255,7 @@ function pay() {
         bank_name = 'Нет данных';
         }
         var span = document.createElement("span");
-span.innerHTML = '<span style="font-size:20px;"> <b>Заявка №' + number + '</b>: <span style="color:blue">В процессе</span> </span> <br><br> Вам дано 19 минут, чтобы совершить транзакцию. <br><br>Сумма транзакции: ' + price + '<br>Банковская организация: ' + bank + '<br><hr><p style="font-size:15px;text-align:center;">Номер кошелька:<br>' + pay_money;
+span.innerHTML = '<span style="font-size:20px;"> <b style="color:#4a4a4a">Заявка №' + number + '</b>: <span style="color:blue">В процессе</span> </span> <br><br> <span style="color:#4a4a4a">Вам дано 19 минут, чтобы совершить транзакцию. <br><br>Сумма транзакции: ' + price + '<br><span style="color:#4a4a4a">Банковская организация: ' + bank_name + '<br><hr><p style="font-size:15px;text-align:center;color:#4a4a4a">Номер кошелька:<br>' + pay_money;
 
 swal({
     content: span,
@@ -297,31 +293,143 @@ swal({
     });
     } 
 
-    } else {
+}
+
+// GiraffeWeb Реквизиты стандартного кошелька
+var valute = 'Не выбрана';
+// GiraffeWeb Переменная банка, пустое значение до выбора
+var bank = '';
+// GiraffeWeb Выбор валют
+function btc_second(e) {
+    valute = 'BTC';
     swal({
-    title: "Данные вашей карты некорректны",
-    content: {
-    element: "a",
-    attributes: {
-      text: "Есть вопросы? Обратитесь к нам",
-      href: "https://t.me/smallcommision",
-        },
-    },
-    icon: "error",
-    button: "ОК",
-    });
-    }
+    title: "Валюта выбрана",
+    text: "BTC (Legacy)",
+    icon: "http://smallcommission.su/img/sybmol/bitcoin.svg",
+  });
+    return valute;
+}
+function usdt_second() {
+    valute = 'USDT';
+    swal({
+    title: "Валюта выбрана",
+    text: "USDT (TRC20)",
+    icon: "http://smallcommission.su/img/sybmol/tether.svg",
+  });
+    return valute;
+}
+function usdc20_second() {
+    valute = 'USDC20';
+    swal({
+    title: "Валюта выбрана",
+    text: "USDC (BEP20)",
+    icon: "http://smallcommission.su/img/sybmol/usd_coin.svg",
+  });
+    return valute;
+}
+function busd_second() {
+    valute = 'BUSD';
+    swal({
+    title: "Валюта выбрана",
+    text: "BUSD",
+    icon: "http://smallcommission.su/img/sybmol/binance_usd.svg",
+  });
+    return valute;
+}
+function bnb20_second() {
+    valute = 'BNB20';
+    swal({
+    title: "Валюта выбрана",
+    text: "BNB (BEP20)",
+    icon: "http://smallcommission.su/img/sybmol/binance_coin.svg",
+  });
+    return valute;
+}
+function bnb2_second() {
+    valute = 'BNB2';
+    swal({
+    title: "Валюта выбрана",
+    text: "BNB (BEP2)",
+    icon: "http://smallcommission.su/img/sybmol/binance_coin.svg",
+  });
+    return valute;
+}
+function xrp_second() {
+    valute = 'XRP';
+    swal({
+    title: "Валюта выбрана",
+    text: "XRP",
+    icon: "http://smallcommission.su/img/sybmol/ripple.svg",
+  });
+    return valute;
+}
+function xrp20_second() {
+    valute = 'XRP20';
+    swal({
+    title: "Валюта выбрана",
+    text: "XRP (BEP20)",
+    icon: "http://smallcommission.su/img/sybmol/ripple.svg",
+  });
+    return valute;
+}
+function xrp2_second() {
+    valute = 'XRP2';
+    swal({
+    title: "Валюта выбрана",
+    text: "XRP (BEP2)",
+    icon: "http://smallcommission.su/img/sybmol/ripple.svg",
+  });
+    return valute;
+}
+function eth_second() {
+    valute = 'ETH';
+    swal({
+    title: "Валюта выбрана",
+    text: "ETH (ERC20)",
+    icon: "http://smallcommission.su/img/sybmol/ethereum.svg",
+  });
+    return valute;
+}
+function trx_second() {
+    valute = 'TRX';
+    swal({
+    title: "Валюта выбрана",
+    text: "TRX",
+    icon: "http://smallcommission.su/img/sybmol/tron.svg",
+  });
+    return valute;
+}
+pay_money_second = '5469380057289067';
+function sber_second() {
+  bank = 'Сбер';
+  swal({
+  title: "Банк выбран",
+  text: "Сбер",
+  icon: "http://smallcommission.su/img/sybmol/sber.png",
+});
+  return bank;
+}
+function tinkof_second() {
+  bank = 'Тинькофф';
+  pay_money_second = '5536913997420308';
+  swal({
+  title: "Банк выбран",
+  text: "Тинькофф",
+  icon: "http://smallcommission.su/img/sybmol/tinkof.png",
+});
+  return bank, pay_money_second;
 
 }
-// GiraffeWeb Осуществление перевда для покупки валют
+// GiraffeWeb Осуществление покупки валют
 function pay_second() {
     var first_second = document.getElementById('price_second').value;
     var fio_second = document.getElementById('fio_second').value;
     var email_second = document.getElementById('email_second').value;
     var requisites_second = document.getElementById('requisites_second').value;
 
+    if (luhnAlgorithm(requisites_second) == true) {
     if (first_second !== '' && fio_second !== '' && email_second !== '' && requisites_second !== '') {
-        if (first_second <= 1) {
+        if (first_second < 1 ) {
             swal({
             title: "Покупку можно совершить только от 1$",
             content: {
@@ -353,10 +461,10 @@ function pay_second() {
         if (bank !== '') {
         bank_name = bank;
         } else {
-        bank_name = 'Нет данных';
+        bank_name = 'Сбер';
         }
         var span = document.createElement("span");
-span.innerHTML = '<span style="font-size:20px;"> <b>Заявка №' + number + '</b>: <span style="color:blue">В процессе</span> </span> <br><br> Вам дано 19 минут, чтобы совершить транзакцию. <br><br>Сумма транзакции: ' + price + '<br>Банковская организация: ' + bank_name + '<br><hr><p style="font-size:15px;text-align:center;">Номер кошелька:<br>' + pay_money;
+span.innerHTML = '<span style="font-size:20px;"> <b style="color:#4a4a4a">Заявка №' + number + '</b>: <span style="color:blue;">В процессе</span> </span> <br><br> <span style="color:#4a4a4a">Вам дано 19 минут, чтобы совершить транзакцию.</span> <br><br><span style="color:#4a4a4a">Сумма транзакции: ' + price + '<br><span style="color:#4a4a4a">Валюта: ' + valute + '<hr><span style="color:#4a4a4a">Банковская организация: ' + bank_name +'<p style="font-size:15px;text-align:center;color:#4a4a4a">Номер кошелька:<br>' + pay_money_second;
 
 swal({
     content: span,
@@ -394,6 +502,22 @@ swal({
     button: "ОК",
     });
     } 
+
+  } else {
+    swal({
+    title: "Данные вашей карты некорректны",
+    content: {
+    element: "a",
+    attributes: {
+      text: "Есть вопросы? Обратитесь к нам",
+      href: "https://t.me/smallcommision",
+        },
+    },
+    icon: "error",
+    button: "ОК",
+    });
+    }
+
     }
 
 // GiraffeWeb Завершение операций
