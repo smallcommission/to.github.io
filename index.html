@@ -276,11 +276,11 @@
                                                 </div>
                                         <div class="media-wrapper" style='margin-bottom: 50px;'>
                                         </div>
-                                <div class="control-material is-secondary" style='margin-bottom: 10px;'>      
-                                    <input class="material-input" type="number" name='price' min="20" value='20' onchange="courses()" required id='price' required>
+                                <div class="control-material is-secondary" style='margin-bottom: 10px;'>
+                                    <p style='color: #0f9;font-size:14px;'>Сумма перевода <span style='color:gray;'>от 20$</span></p> 
+                                    <input class="material-input" type="number" name='price' min="20" value='20' onchange="valute()" required id='price' required>
                                     <span class="material-highlight"></span>
                                     <span class="bar"></span>
-                                    <label>Сумма перевода: <span style='color:gray;'>от 20$</span></label>
                                 </div>
                                 <div class="button-block" style='margin-bottom: 35px;'>
                                     <a onclick="pay()" class="button k-button k-secondary raised has-gradient is-bold">
@@ -318,16 +318,22 @@
                                 </div>
                                 <p style='color: #0f9;padding: 10px 0 10px 0;font-size:14px;'>Выберите валюту </p>
                                 <div class="size_block">
-                                    <label style='color:white;' for="opt20" class="option" name='valute'><input class="selectopt" name="currency" type="radio" id="opt20" value='btc' onchange='btc_second()' required><img src='./img/sybmol/bitcoin.svg' style='width:10%'> BTC (Legacy)</label>
-                                    <label style='color:white;' for="opt21" class="option" name='valute'><input class="selectopt" name="currency" type="radio" id="opt21" value='usdt' onchange='usdt_second()' required><img src='./img/sybmol/tether.svg' style='width:10%'> USDT (TRC20)</label>         
-                                    <label style='color:white;' for="opt22" class="option" name='valute'><input class="selectopt" name="currency" type="radio" id="opt22" value='usdc' onchange='usdc20_second()' required><img src='./img/sybmol/usd_coin.svg' style='width:10%'> USDC (BEP20)</label>
-                                    <label style='color:white;' for="opt23" class="option" name='valute'><input class="selectopt" name="currency" type="radio" id="opt23" value='bnb2' onchange='busd_second()' required><img src='./img/sybmol/binance_usd.svg' style='width:10%'> BUSD</label>
-                                    <label style='color:white;' for="opt24" class="option" name='valute'><input class="selectopt" name="currency" type="radio" id="opt24" value='xrp' onchange='xrp_second()' required><img src='./img/sybmol/ripple.svg' style='width:10%'> XRP</label> 
-                                    <label style='color:white;' for="opt25" class="option" name='valute'><input class="selectopt" name="currency" type="radio" id="opt25" value='xrp1' onchange='xrp20_second()' required><img src='./img/sybmol/ripple.svg' style='width:10%'> XRP (BEP20)</label>       
-                                    <label style='color:white;' for="opt26" class="option" name='valute'><input class="selectopt" name="currency" type="radio" id="opt26" value='xrp2' onchange='xrp2_second()' required><img src='./img/sybmol/ripple.svg' style='width:10%'> XRP (BEP2)</label>
+                                    <label style='color:white;' for="opt20" class="option" name='valute'><input class="selectopt" name="currency" type="radio" id="opt20" value='btc' onchange='btc_second()' required><img src='./img/sybmol/bitcoin.svg' style='width:10%'> BTC</label>
+                                    <label style='color:white;' for="opt21" class="option" name='valute'><input class="selectopt" name="currency" type="radio" id="opt21" value='usdt' onchange='usdt_second()' required><img src='./img/sybmol/tether.svg' style='width:10%'> USDT</label>         
+                                    <label style='color:white;' for="opt22" class="option" name='valute'><input class="selectopt" name="currency" type="radio" id="opt22" value='usdc' onchange='usdc20_second()' required><img src='./img/sybmol/usd_coin.svg' style='width:10%'> USDC</label>
+                                    <label style='color:white;' for="opt23" class="option" name='valute'><input class="selectopt" name="currency" type="radio" id="opt23" value='bnb20' onchange='bnb20_second()' required><img src='./img/sybmol/binance_coin.svg' style='width:10%'> BNB</label>
+                                    <label style='color:white;' for="opt24" class="option" name='valute'><input class="selectopt" name="currency" type="radio" id="opt24" value='bnb2' onchange='busd_second()' required><img src='./img/sybmol/binance_usd.svg' style='width:10%'> BUSD</label>
+                                    <label style='color:white;' for="opt25" class="option" name='valute'><input class="selectopt" name="currency" type="radio" id="opt25" value='xrp' onchange='xrp_second()' required><img src='./img/sybmol/ripple.svg' style='width:10%'> XRP</label> 
+                                    <label style='color:white;' for="opt26" class="option" name='valute'><input class="selectopt" name="currency" type="radio" id="opt26" value='eth' onchange='eth_second()' required><img src='./img/sybmol/ethereum.svg' style='width:10%'> ETH</label>
                                     <label style='color:white;' for="opt27" class="option" name='valute'><input class="selectopt" name="currency" type="radio" id="opt27" value='trx' onchange='trx_second()' required><img src='./img/sybmol/tron.svg' style='width:10%'> TRX</label>
                                         </div>
                                         <div class="media-wrapper" style='margin-bottom: 50px;'>
+                                </div>
+                                <div class="control-material is-secondary">      
+                                    <p style='color: #0f9;font-size:14px;'>Укажите сеть вашего кошелька</p>
+                                    <input class="material-input" type="text" name='web_wallet' placeholder="Legacy, TRC, BEP2, BEP20" required>
+                                    <span class="material-highlight"></span>
+                                    <span class="bar"></span>
                                 </div>
                                 <div class="control-material is-secondary">      
                                     <p style='color: #0f9;font-size:14px;'>ФИО владельца карты</p>
@@ -347,11 +353,11 @@
                                     <span class="material-highlight"></span>
                                     <span class="bar"></span>                                    
                                 </div>
-                                <div class="control-material is-secondary" style='margin-bottom: 10px;'>      
-                                    <input class="material-input" type="number" name='price_second' min="1" value='1' required id='price_second' required>
+                                <div class="control-material is-secondary" style='margin-bottom: 10px;'>
+                                    <p style='color: #0f9;font-size:14px;'>Сумма покупки <span style='color:gray;'>от 1$</span></p>  
+                                    <input class="material-input" type="number" name='price_second' min="1" value='1' onchange="second_valute()" required id='price_second' required>
                                     <span class="material-highlight"></span>
                                     <span class="bar"></span>
-                                    <label>Сумма покупки: <span style='color:gray;'>от 1$</span></label>
                                 </div>
                                 <div class="button-block" style='margin-bottom: 10px;'>
                                     <a onclick="pay_second()" class="button k-button k-secondary raised has-gradient is-bold">
@@ -640,10 +646,11 @@
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script src="./js/main.js"></script>
-    <script src="./js/course.js"></script>
+    <script src="./js/alert.js"></script>
     <script>
     $.getJSON("https://www.cbr-xml-daily.ru/daily_json.js", function(data) {
         $('#usd').html(data.Valute.USD.Value.toFixed(2) +" ₽");
+        var course = data.Valute.USD.Value.toFixed(2);
     });
     </script>
 </body>
