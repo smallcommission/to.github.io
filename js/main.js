@@ -255,7 +255,7 @@ function pay() {
         bank_name = 'Нет данных';
         }
         var span = document.createElement("span");
-span.innerHTML = '<span style="font-size:20px;"> <b style="color:#4a4a4a">Заявка №' + number + '</b>: <span style="color:blue">В процессе</span> </span> <br><br> <span style="color:#4a4a4a">Вам дано 19 минут, чтобы совершить транзакцию. <br><br>Сумма транзакции: ' + price + '(' + sum + '₽)' + '<br><span style="color:#4a4a4a">Банковская организация: ' + bank_name + '<br><hr><p style="font-size:15px;text-align:center;color:#4a4a4a">Номер кошелька:<br><span style="font-size:10px;">' + pay_money;
+span.innerHTML = '<span style="font-size:20px;"> <b style="color:#4a4a4a">Заявка №' + number + '</b>: <span style="color:blue">В процессе</span> </span> <br><br> <span style="color:#4a4a4a">Вам дано 19 минут, чтобы совершить транзакцию. <br><br>Сумма транзакции: ' + price + ' (' + sum + '₽)' + '<br><span style="color:#4a4a4a">Банковская организация: ' + bank_name + '<br><hr><p style="font-size:15px;text-align:center;color:#4a4a4a">Номер кошелька:<br><span style="font-size:10px;">' + pay_money;
 
 swal({
     content: span,
