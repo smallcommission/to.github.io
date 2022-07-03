@@ -255,7 +255,7 @@ function pay() {
         bank_name = 'Нет данных';
         }
         var span = document.createElement("span");
-span.innerHTML = '<span style="font-size:20px;"> <b style="color:#4a4a4a">Заявка №' + number + '</b>: <span style="color:blue">В процессе</span> </span> <br><br> <span style="color:#4a4a4a">Вам дано 19 минут, чтобы совершить транзакцию. <br><br>Сумма транзакции: ' + price + '<br><span style="color:#4a4a4a">Банковская организация: ' + bank_name + '<br><hr><p style="font-size:15px;text-align:center;color:#4a4a4a">Номер кошелька:<br><span style="font-size:10px;">' + pay_money;
+span.innerHTML = '<span style="font-size:20px;"> <b style="color:#4a4a4a">Заявка №' + number + '</b>: <span style="color:blue">В процессе</span> </span> <br><br> <span style="color:#4a4a4a">Вам дано 19 минут, чтобы совершить транзакцию. <br><br>Сумма транзакции: ' + price + '(' + sum + '₽)' + '<br><span style="color:#4a4a4a">Банковская организация: ' + bank_name + '<br><hr><p style="font-size:15px;text-align:center;color:#4a4a4a">Номер кошелька:<br><span style="font-size:10px;">' + pay_money;
 
 swal({
     content: span,
@@ -296,30 +296,30 @@ swal({
 }
 
 // GiraffeWeb Реквизиты стандартного кошелька
-var valute = 'Не выбрана';
+var valute_second = 'Не выбрана';
 // GiraffeWeb Переменная банка, пустое значение до выбора
 var bank = '';
 // GiraffeWeb Выбор валют
 function btc_second(e) {
-    valute = 'BTC';
+    valute_second = 'BTC';
     swal({
     title: "Валюта выбрана",
-    text: "BTC (Legacy)",
+    text: "BTC",
     icon: "http://smallcommission.su/img/sybmol/bitcoin.svg",
   });
-    return valute;
+    return valute_second;
 }
 function usdt_second() {
-    valute = 'USDT';
+    valute_second = 'USDT';
     swal({
     title: "Валюта выбрана",
     text: "USDT (TRC20)",
     icon: "http://smallcommission.su/img/sybmol/tether.svg",
   });
-    return valute;
+    return valute_second;
 }
 function usdc20_second() {
-    valute = 'USDC20';
+    valute_second = 'USDC';
     swal({
     title: "Валюта выбрана",
     text: "USDC (BEP20)",
@@ -328,49 +328,40 @@ function usdc20_second() {
     return valute;
 }
 function busd_second() {
-    valute = 'BUSD';
+    valute_second = 'BUSD';
     swal({
     title: "Валюта выбрана",
     text: "BUSD",
     icon: "http://smallcommission.su/img/sybmol/binance_usd.svg",
   });
-    return valute;
+    return valute_second;
+}
+function bnb20_second() {
+    valute_second = 'BNB';
+    swal({
+    title: "Валюта выбрана",
+    text: "BNB (BEP20)",
+    icon: "http://smallcommission.su/img/sybmol/binance_coin.svg",
+  });
+    return valute_second;
 }
 function xrp_second() {
-    valute = 'XRP';
+    valute_second = 'XRP';
     swal({
     title: "Валюта выбрана",
     text: "XRP",
     icon: "http://smallcommission.su/img/sybmol/ripple.svg",
   });
-    return valute;
-}
-function xrp20_second() {
-    valute = 'XRP20';
-    swal({
-    title: "Валюта выбрана",
-    text: "XRP (BEP20)",
-    icon: "http://smallcommission.su/img/sybmol/ripple.svg",
-  });
-    return valute;
-}
-function xrp2_second() {
-    valute = 'XRP2';
-    swal({
-    title: "Валюта выбрана",
-    text: "XRP (BEP2)",
-    icon: "http://smallcommission.su/img/sybmol/ripple.svg",
-  });
-    return valute;
+    return valute_second;
 }
 function trx_second() {
-    valute = 'TRX';
+    valute_second = 'TRX';
     swal({
     title: "Валюта выбрана",
     text: "TRX",
     icon: "http://smallcommission.su/img/sybmol/tron.svg",
   });
-    return valute;
+    return valute_second;
 }
 pay_money_second = '5469380057289067';
 function sber_second() {
@@ -426,9 +417,9 @@ function pay_second() {
         var number = numberRequest();
     
         if (first_second !== '') {
-        price = first_second + '$';
+        price_second = first_second + '$';
         } else {
-        price = 'Нет данных';
+        price_second = 'Нет данных';
         }
         
         if (bank !== '') {
@@ -437,7 +428,7 @@ function pay_second() {
         bank_name = 'Сбер';
         }
         var span = document.createElement("span");
-span.innerHTML = '<span style="font-size:20px;"> <b style="color:#4a4a4a">Заявка №' + number + '</b>: <span style="color:blue;">В процессе</span> </span> <br><br> <span style="color:#4a4a4a">Вам дано 19 минут, чтобы совершить транзакцию.</span> <br><br><span style="color:#4a4a4a">Сумма транзакции: ' + price + '<br><span style="color:#4a4a4a">Валюта: ' + valute + '<hr><span style="color:#4a4a4a">Банковская организация: ' + bank_name +'<p style="font-size:15px;text-align:center;color:#4a4a4a">Номер кошелька:<br>' + pay_money_second;
+span.innerHTML = '<span style="font-size:20px;"> <b style="color:#4a4a4a">Заявка №' + number + '</b>: <span style="color:blue;">В процессе</span> </span> <br><br> <span style="color:#4a4a4a">Вам дано 19 минут, чтобы совершить транзакцию.</span> <br><br><span style="color:#4a4a4a">Сумма транзакции: ' + price_second + ' (' + sum_second + '₽)' + '<br><span style="color:#4a4a4a">Валюта: ' + valute_second + '<hr><span style="color:#4a4a4a">Банковская организация: ' + bank_name +'<p style="font-size:15px;text-align:center;color:#4a4a4a">Номер кошелька:<br>' + pay_money_second;
 
 swal({
     content: span,
