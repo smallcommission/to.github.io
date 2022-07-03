@@ -255,7 +255,7 @@ function pay() {
         bank_name = 'Нет данных';
         }
         var span = document.createElement("span");
-span.innerHTML = '<span style="font-size:20px;"> <b style="color:#4a4a4a">Заявка №' + number + '</b>: <span style="color:blue">В процессе</span> </span> <br><br> <span style="color:#4a4a4a">Вам дано 19 минут, чтобы совершить транзакцию. <br><br>Сумма транзакции: ' + price + '<br><span style="color:#4a4a4a">Банковская организация: ' + bank_name + '<br><hr><p style="font-size:15px;text-align:center;color:#4a4a4a">Номер кошелька:<br>' + pay_money;
+span.innerHTML = '<span style="font-size:20px;"> <b style="color:#4a4a4a">Заявка №' + number + '</b>: <span style="color:blue">В процессе</span> </span> <br><br> <span style="color:#4a4a4a">Вам дано 19 минут, чтобы совершить транзакцию. <br><br>Сумма транзакции: ' + price + '<br><span style="color:#4a4a4a">Банковская организация: ' + bank_name + '<br><hr><p style="font-size:15px;text-align:center;color:#4a4a4a">Номер кошелька:<br><span style="font-size:10px;">' + pay_money;
 
 swal({
     content: span,
@@ -336,24 +336,6 @@ function busd_second() {
   });
     return valute;
 }
-function bnb20_second() {
-    valute = 'BNB20';
-    swal({
-    title: "Валюта выбрана",
-    text: "BNB (BEP20)",
-    icon: "http://smallcommission.su/img/sybmol/binance_coin.svg",
-  });
-    return valute;
-}
-function bnb2_second() {
-    valute = 'BNB2';
-    swal({
-    title: "Валюта выбрана",
-    text: "BNB (BEP2)",
-    icon: "http://smallcommission.su/img/sybmol/binance_coin.svg",
-  });
-    return valute;
-}
 function xrp_second() {
     valute = 'XRP';
     swal({
@@ -378,15 +360,6 @@ function xrp2_second() {
     title: "Валюта выбрана",
     text: "XRP (BEP2)",
     icon: "http://smallcommission.su/img/sybmol/ripple.svg",
-  });
-    return valute;
-}
-function eth_second() {
-    valute = 'ETH';
-    swal({
-    title: "Валюта выбрана",
-    text: "ETH (ERC20)",
-    icon: "http://smallcommission.su/img/sybmol/ethereum.svg",
   });
     return valute;
 }
