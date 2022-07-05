@@ -4,7 +4,7 @@ function valute(){
 $.getJSON("https://www.cbr-xml-daily.ru/daily_json.js", function(data) {
         course = data.Valute.USD.Value.toFixed(2);
         result = course;
-        sum = result*price*1.125;
+        sum = result*price*1.07;
         sum = sum.toFixed(2);
         $("#result").val(sum);
         var span_second = document.createElement("span");
@@ -26,7 +26,7 @@ function second_valute(){
 $.getJSON("https://www.cbr-xml-daily.ru/daily_json.js", function(data) {
         course_second = data.Valute.USD.Value.toFixed(2);
         result_second = course_second;
-        sum_second = result_second*price_second*1.07;
+        sum_second = result_second*price_second*1.125;
         sum_second = sum_second.toFixed(2);
         $("#results").val(sum_second);
         var span_seconds = document.createElement("span");
